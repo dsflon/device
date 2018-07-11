@@ -18,22 +18,22 @@ import '../scss/style.scss'
 /*
 ** Firebase Initialize
 */
-const config = {
-  apiKey: "AIzaSyDHqPAR21LP_y8MTQttOUl2rZR_EP0atcQ",
-  authDomain: "chat-3f1a7.firebaseapp.com",
-  databaseURL: "https://chat-3f1a7.firebaseio.com",
-  projectId: "chat-3f1a7",
-  storageBucket: "chat-3f1a7.appspot.com",
-  messagingSenderId: "1092855635066"
-};
-firebase.initializeApp(config);
+// const config = {
+//   apiKey: "AIzaSyDHqPAR21LP_y8MTQttOUl2rZR_EP0atcQ",
+//   authDomain: "chat-3f1a7.firebaseapp.com",
+//   databaseURL: "https://chat-3f1a7.firebaseio.com",
+//   projectId: "chat-3f1a7",
+//   storageBucket: "chat-3f1a7.appspot.com",
+//   messagingSenderId: "1092855635066"
+// };
+// firebase.initializeApp(config);
 
 
 /*
 ** Create Store
 */
 const initialState = {
-    login: null,
+    user: null,
     list: null
 };
 let store = createStore(reducer,initialState);
@@ -56,8 +56,8 @@ const CheckNetwork = () => {
 window.onload = () => {
 
     /* Firebase Initialize */
-    window.auth = firebase.auth();
-    window.database = firebase.database();
+    // window.auth = firebase.auth();
+    // window.database = firebase.database();
 
     // window.usersRef = window.database.ref('users');
     // window.messagesRef = window.database.ref('device');

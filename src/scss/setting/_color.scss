@@ -4,32 +4,32 @@
 //------------------------------------------------------------------------------
 
 	//thema color
-	$color_main: #ec4501;
-	$color_sub: #111;
+	$color_main: #C43535;
+	$color_sub: #333333;
 
 	//text color
-	$color_text: #111;
+	$color_text: #333333;
 
 	//Link color
-	$color_link: #ec4501;
+	$color_link: #C43535;
 
 	//Grayscale
 	$black100: #000;
 	$black90: #333;
 	$black80: #504f4f;
 	$black70: #666;
-	$black60: #7d7d7d;
+	$black60: #777777;
 	$black50: #999;
 	$black40: #b2b1b1;
-	$black30: #CCC;
-	$black20: #DDD;
+	$black30: #C1C1C1;
+	$black20: #DBDBDB;
 	$black10: #e3e3e3;
 	$black0: #f7f7f7;
 
 	// Other
-	$red: #ea0a0a;
+	$red: #C43535;
 	$blue: #2D72A7;
-	$yellow: #ead805;
+	$yellow: #E2C319;
 	$green: #9abc50;
 
 
@@ -38,9 +38,9 @@
 //------------------------------------------------------------------------------
 
 	$colors: (
-		red: $red,
+		red: #C43535,
 		blue: $blue,
-		yellow: $yellow,
+		yellow: #E2C319,
 		green: $green
 	);
 

@@ -1,4 +1,4 @@
-const Login = (value) => {
+const User = (value) => {
     return { type: "LOGIN", value };
 }
 const List = (value) => {
@@ -6,6 +6,6 @@ const List = (value) => {
 }
 
 export {
-    Login,
+    User,
     List
 }

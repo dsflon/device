@@ -19,7 +19,7 @@ const SOURCE_MAP_STYLE = 'inline-source-map'; // 'inline-source-map', 'source-ma
 const DEV_SERVER = {
     contentBase: ROOT_PATH_NAME,
     // open: true,
-    port: 5001,
+    port: 5002,
     host: '0.0.0.0',
     watchContentBase: true,
     historyApiFallback: true

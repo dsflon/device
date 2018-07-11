@@ -3,16 +3,35 @@
 // Font Family
 //------------------------------------------------------------------------------
 
-	$font_base: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	@font-face {
+	    font-family: 'NotoSansCJKjp-DemiLight';
+	    font-style: normal;
+	    // font-weight: 400;
+	    src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff2) format('woff2'),
+	    url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff) format('woff'),
+	    url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.otf) format('opentype');
+	}
+	@font-face {
+	    font-family: 'NotoSansCJKjp-Bold';
+	    font-style: normal;
+	    // font-weight: 500;
+	    src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.woff2) format('woff2'),
+	    url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.woff) format('woff'),
+	    url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.otf) format('opentype');
+	}
 
+	@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700);
+
+	$font_base: 'Roboto Mono', 'NotoSansCJKjp-DemiLight','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	$font_bold: 'Roboto Mono', 'NotoSansCJKjp-Bold', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 
 // Font Size
 //------------------------------------------------------------------------------
 
-	$font-size_base: 14;
+	$font-size_base: 16;
 
 
 // Line height
 //------------------------------------------------------------------------------
 
-	$line-height_base: 200%;
+	$line-height_base: 1.8;

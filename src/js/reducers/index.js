@@ -4,12 +4,12 @@ const reducer = (state, action) => {
 
         case 'LOGIN':
         return Object.assign({}, state, {
-            login: action.value
+            user: action.value
         })
 
         case 'DEVICE_LIST':
         return Object.assign({}, state, {
-            list: action.value,
+            list: action.value
         })
 
         default:
