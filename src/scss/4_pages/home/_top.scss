@@ -3,10 +3,10 @@
 .fw {
 
     .lists {
-        padding: 20px 10px;
+        padding: 0 10px 20px;
 
         .list {
-            margin-top: 40px;
+            margin-top: 23px;
 
             .list_item {
 
@@ -15,27 +15,13 @@
 
                 .list_item_btn {
                     background: #FFF;
-                    border-radius: 4px;
+                    border-radius: 5px 4px 4px 4px;
                     box-shadow: 0 0 5px 0 rgba(#000,0.1);
                     width: 100%; min-height: 120px;
                     text-align: left;
                     padding: 20px;
                     position: relative;
-
-                    &:before {
-                        content: attr(data-devicenum);
-                        position: absolute;
-                        top: 0; left: 0;
-                        display: block;
-                        width: 20px; height: 20px;
-                        font-size: 12px;
-                        color: #FFF;
-                        background: $yellow;
-                        font-weight: bold;
-                        line-height: 18px;
-                        text-align: center;
-                        border-radius: 4px 0 0 0;
-                    }
+                    transition: background 0.2s ease;
 
                     &[data-user="own"] {
                         background: $color_main;
@@ -48,6 +34,7 @@
                     &[data-user="other"] {
                         box-shadow: none;
                         > * { opacity: 0.4; }
+                        &:before { opacity: 0.4; }
                     }
 
                 }

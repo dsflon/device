@@ -62,7 +62,7 @@ class Items extends React.Component {
 
                         <figure className="m-device_image"><img src={item.image} /></figure>
                         <div className="m-device_info">
-                            <h2 className="a-ttl m-device_ttl"><span>{item.name}</span></h2>
+                            <h3 className="a-ttl m-device_ttl"><span>{item.name}</span></h3>
                             <p className="m-device_os">{item.os}</p>
                             {userDom}
                         </div>
@@ -91,7 +91,7 @@ class Items extends React.Component {
 
             categoryDom.push(
                 <section key={categoryId} className={"list"}>
-                    <h1 className={"a-ttl a-ttl_m a-ttl_mb list_cat"}>{categoryId}</h1>
+                    <h2 className={"a-ttl a-ttl_m a-ttl_mb list_cat"}>{categoryId}</h2>
                     <ul className="list_items">
                         {this.GetList(items,categoryId)}
                     </ul>

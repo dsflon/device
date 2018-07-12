@@ -25,11 +25,13 @@ const Do = (history,e) => {
 
 const Return = ({deviceId,item,history}) => {
 
+    let deviceNum = deviceId.split("_")[1];
+
     return (
         <section className="rental">
             <div className="rental_inner return">
 
-                <div className="rental_device m-device" data-sim={item.sim}>
+                <div className="rental_device m-device" data-sim={item.sim} data-devicenum={deviceNum}>
                     <figure className="m-device_image"><img src={item.image} /></figure>
                     <div className="m-device_info">
                         <h2 className="a-ttl m-device_ttl"><span>{item.name}</span></h2>
@@ -39,7 +41,7 @@ const Return = ({deviceId,item,history}) => {
 
                 <div className="rental_main">
 
-                    <h1 className="a-ttl a-ttl_s f-txt_red">この端末を返しますか？</h1>
+                    <p className="a-ttl a-ttl_s f-txt_red">この端末を返しますか？</p>
 
                     <div className="rental_notice">
                         <ul className="f-font_b">

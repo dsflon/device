@@ -5,6 +5,36 @@
 	// ----------------------------------------------------------
 	// Header
 	// ----------------------------------------------------------
+    #header {
+        background: #FFF;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        padding: 0 15px;
+
+        .header_wrap {
+            width: 50%;
+            line-height: 1;
+            text-align: right;
+            .header_btn {
+                width: 30px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 14px;
+            }
+            .header_user {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 12px;
+                font-family: $font_noto;
+                span { font-size: 10px; color: $black60; }
+            }
+        }
+        .header_ttl {
+            width: 50%;
+        }
+    }
 
 
 }//.fw

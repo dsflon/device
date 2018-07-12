@@ -25,14 +25,16 @@ const Do = (history,user,e) => {
 
 const Borrow = ({deviceId,item,history,user}) => {
 
+    let deviceNum = deviceId.split("_")[1];
+
     return (
         <section className="rental">
             <div className="rental_inner borrow">
 
-                <div className="rental_device m-device" data-sim={item.sim}>
+                <div className="rental_device m-device" data-sim={item.sim} data-devicenum={deviceNum}>
                     <figure className="m-device_image"><img src={item.image} /></figure>
                     <div className="m-device_info">
-                        <h2 className="a-ttl m-device_ttl"><span>{item.name}</span></h2>
+                        <p className="a-ttl m-device_ttl"><span>{item.name}</span></p>
                         <p className="m-device_os">{item.os}</p>
                     </div>
                 </div>
