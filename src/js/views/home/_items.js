@@ -9,27 +9,12 @@ class Items extends React.Component {
     }
 
     componentWillMount() {
-        this.uid = Object.keys(this.props.state.user)[0];
+        this.user = this.props.state.user;
+        this.list = this.props.state.list;
+        this.uid = Object.keys(this.user)[0];
     }
 
     componentDidMount() {
-    }
-
-    Rental(e) {
-
-        e.preventDefault();
-
-        let target = e.currentTarget,
-            id = target.id,
-            user = target.dataset.user,
-            rentalDic = {
-                'own': () => { console.log(id + " を返す") },
-                'other': () => { console.log("借りれません") },
-                'no': () => { console.log(id + " を借りる") }
-            }
-
-        rentalDic[user]();
-
     }
 
     GetList(data,categoryId) {
@@ -44,34 +29,41 @@ class Items extends React.Component {
             if(user) dataUser = user.uid === this.uid ? "own" : "other"
 
             let userDom = user ? (
-                <div className="list_item_user">
-                    <p className="list_item_user_name">
-                        {user.dep + " - " + user.name}
-                        <span>さん</span>
-                    </p>
-                    <p className="list_item_user_time">
+                <div className="m-device_user">
+                    {
+                        (() => {
+                            if(user.uid !== this.uid) {
+                                return (
+                                    <p className="m-device_user_name">
+                                        {user.dep + " - " + user.name}
+                                        <span> さん</span>
+                                    </p>
+                                )
+                            } else {
+                                return <p className="m-device_user_name">あなたが使用しています</p>
+                            }
+                        })()
+                    }
+                    <p className="m-device_user_time">
                         {TimeStamp(user.timestamp) + " ~"}
                     </p>
                 </div>
             ) : null;
 
-
             listDom.push(
                 <li sort={item.sort} key={deviceId} className="list_item">
                     <button
                         id={categoryId+"_"+deviceId}
-                        className={"list_item_btn"}
+                        className="list_item_btn m-device"
                         data-user={dataUser}
                         data-devicenum={deviceId}
                         data-sim={item.sim}
-                        onClick={this.Rental.bind(this)}>
+                        onClick={this.props.rental.bind(this)}>
 
-                        <figure className="image" style={  { "backgroundImage": "url("+ item.image +")" } }></figure>
-                        <div className="list_item_info">
-                            <h2 className="list_item_ttl">
-                                {item.name}
-                                <span>{item.os}</span>
-                            </h2>
+                        <figure className="m-device_image"><img src={item.image} /></figure>
+                        <div className="m-device_info">
+                            <h2 className="a-ttl m-device_ttl"><span>{item.name}</span></h2>
+                            <p className="m-device_os">{item.os}</p>
                             {userDom}
                         </div>
 
@@ -99,7 +91,7 @@ class Items extends React.Component {
 
             categoryDom.push(
                 <section key={categoryId} className={"list"}>
-                    <h1 className={"list_cat"}>{categoryId}</h1>
+                    <h1 className={"a-ttl a-ttl_m a-ttl_mb list_cat"}>{categoryId}</h1>
                     <ul className="list_items">
                         {this.GetList(items,categoryId)}
                     </ul>
@@ -113,13 +105,10 @@ class Items extends React.Component {
 
     render() {
 
-        this.list = this.props.state.list;
-        this.user = this.props.state.user;
-
         let items = this.GetCategory(this.list);
 
         return (
-            <div className="list">
+            <div className="lists">
                 {items}
             </div>
         );

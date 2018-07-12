@@ -5,6 +5,30 @@
     // ----------------------------------------------------------
     // Title
     // ----------------------------------------------------------
+    .a-ttl {
+        font-weight: bold;
+        line-height: 1.2;
+
+        &_mb {
+            margin-bottom: 25px;
+        }
+
+        &_l {
+            font-size: 22px;
+            text-align: center;
+        }
+
+        &_m {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        &_s {
+            font-size: 18px;
+            text-align: center;
+        }
+
+    }
 
 
 }//.fw

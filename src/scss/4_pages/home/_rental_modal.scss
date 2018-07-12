@@ -1,0 +1,88 @@
+@charset "utf-8";
+
+.fw {
+
+    .rental {
+
+        &:before {
+            content: '';
+            display: block;
+            background: rgba(#000,0.6);
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2;
+        }
+
+        .rental_inner {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 3;
+            background: #FFF;
+            border-radius: 4px;
+            width: calc(100% - 40px);
+            max-width: 640px;
+
+            .rental_device {
+                padding: 20px;
+                border-bottom: 1px solid $black30;
+                .m-device_image { max-width: 60px; }
+            }
+
+            .rental_main {
+                padding: 25px 20px 20px;
+
+                .rental_notice {
+                    margin-top: 30px;
+                    font-size: 14px;
+                    background: $black0;
+                    padding: 30px 20px 20px;
+                    border-radius: 4px;
+                    position: relative;
+                    &:before {
+                        content: "！";
+                        font-family: $font_bold;
+                        background: $color_sub;
+                        border: 10px solid $black0;
+                        border-radius: 100%;
+                        color: #FFF;
+                        font-weight: bold;
+                        position: absolute;
+                        top: -15px; left: 50%;
+                        transform: translate(-50%,0);
+                        width: 24px; height: 24px;
+                        text-align: center;
+                        line-height: 24px;
+                        font-size: 16px;
+                    }
+                    ul {
+                        display: table;
+                        margin: 0 auto;
+                        li { display: table; margin: 2px 0; }
+                    }
+                }//.rental_notice
+
+                .rental_btns { margin-top: 20px; }
+
+            }
+
+            &.return {
+                .rental_main {
+                    .rental_notice {
+                        color: $color_main;
+                        &:before { background: $color_main; }
+                        ul li {
+                            background: linear-gradient(transparent 60%, rgba($yellow,0.2) 0%);
+                        }
+                    }
+
+                }
+            }
+
+        }//.rental_inner
+
+    }
+
+
+}//.fw

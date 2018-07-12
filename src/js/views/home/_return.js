@@ -1,0 +1,73 @@
+import React from 'react';
+
+const Close = (history,e) => {
+
+    e.preventDefault();
+    history.push("/")
+
+}
+
+const Do = (history,e) => {
+
+    e.preventDefault();
+
+    let deviceId = e.currentTarget.id,
+        keyCat = deviceId.split("_")[0],
+        keyNum = deviceId.split("_")[1];
+    console.log(keyCat,keyNum);
+
+    setTimeout( () => {
+        console.log(deviceId+"は返却されました。");
+        history.push("/")
+    }, 1000)
+
+}
+
+const Return = ({deviceId,item,history}) => {
+
+    return (
+        <section className="rental">
+            <div className="rental_inner return">
+
+                <div className="rental_device m-device" data-sim={item.sim}>
+                    <figure className="m-device_image"><img src={item.image} /></figure>
+                    <div className="m-device_info">
+                        <h2 className="a-ttl m-device_ttl"><span>{item.name}</span></h2>
+                        <p className="m-device_os">{item.os}</p>
+                    </div>
+                </div>
+
+                <div className="rental_main">
+
+                    <h1 className="a-ttl a-ttl_s f-txt_red">この端末を返しますか？</h1>
+
+                    <div className="rental_notice">
+                        <ul className="f-font_b">
+                            <li>・電池残量は十分ですか？</li>
+                            <li>・画面は拭き取りましたか？</li>
+                        </ul>
+                    </div>
+
+                    <div className="rental_btns a-btn_col">
+                        <button
+                            className="a-btn"
+                            onClick={Close.bind(this,history)}>
+                            いいえ
+                        </button>
+                        <button
+                            id={deviceId}
+                            className="a-btn a-btn_red"
+                            onClick={Do.bind(this,history)}>
+                            はい
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    )
+
+}
+
+export default Return;

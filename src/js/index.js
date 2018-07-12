@@ -19,12 +19,12 @@ import '../scss/style.scss'
 ** Firebase Initialize
 */
 // const config = {
-//   apiKey: "AIzaSyDHqPAR21LP_y8MTQttOUl2rZR_EP0atcQ",
-//   authDomain: "chat-3f1a7.firebaseapp.com",
-//   databaseURL: "https://chat-3f1a7.firebaseio.com",
-//   projectId: "chat-3f1a7",
-//   storageBucket: "chat-3f1a7.appspot.com",
-//   messagingSenderId: "1092855635066"
+    // apiKey: "AIzaSyAoCKwZTDg2cnk4EL__2F551peIH409Mug",
+    // authDomain: "device-rental.firebaseapp.com",
+    // databaseURL: "https://device-rental.firebaseio.com",
+    // projectId: "device-rental",
+    // storageBucket: "",
+    // messagingSenderId: "911109915400"
 // };
 // firebase.initializeApp(config);
 

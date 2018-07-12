@@ -6,6 +6,8 @@ import * as ActionCreators from '../../actions';
 
 import Fetch from '../../common/_fetch';
 import Items from './_items';
+import Borrow from './_borrow';
+import Return from './_return';
 
 class App extends React.Component {
 
@@ -21,6 +23,52 @@ class App extends React.Component {
         //         "name": "斎藤 大輝"
         //     }
         // }));
+
+    }
+
+    ClickRental(e) {
+
+        e.preventDefault();
+
+        let target = e.currentTarget,
+            id = target.id,
+            user = target.dataset.user,
+            rentalDic = {
+                'own': () => {
+                    this.history.push("/return?deviceid="+id);
+                },
+                'other': () => { console.log("借りれません") },
+                'no': () => {
+                    this.history.push("/borrow?deviceid="+id);
+                }
+            }
+
+        rentalDic[user]();
+
+    }
+
+    ShowRental(){
+
+        let rental = this.props.match.params.rental,
+            deviceId = this.props.location.search;
+
+        if(!rental || !deviceId) return false;
+
+            deviceId = deviceId.split("?deviceid=")[1];
+
+        let keys = deviceId.split("_"),
+            item = this.state.list[keys[0]][keys[1]];
+
+        switch (rental) {
+
+            case 'borrow':
+            return <Borrow key="borrow" deviceId={deviceId} item={item} history={this.history} user={this.state.user} />
+
+            case 'return':
+            return <Return key="return" deviceId={deviceId} item={item} history={this.history} />;
+
+        }
+
     }
 
     componentDidMount() {
@@ -34,6 +82,7 @@ class App extends React.Component {
         }
 
         Fetch();
+
     }
 
     componentDidUpdate() {
@@ -50,11 +99,13 @@ class App extends React.Component {
 
         window.actions = this.props.actions;
 
-        let Item = this.Success() ? <Items state={this.state} /> : null;
+        let item = this.Success() ? <Items state={this.state} rental={this.ClickRental.bind(this)} /> : null;
+        let rental = this.Success() ? this.ShowRental() : null;
 
         return (
-            <div className="page">
-                {Item}
+            <div id="contents" className="f-inner">
+                {item}
+                {rental}
             </div>
         );
 
