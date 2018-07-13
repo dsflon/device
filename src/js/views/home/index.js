@@ -1,4 +1,5 @@
 import React from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -24,6 +25,16 @@ class App extends React.Component {
         //         "name": "斎藤 大輝"
         //     }
         // }));
+        this.history = this.props.history;
+        window.actions = this.props.actions;
+
+        window.actions.User({
+            "daiki_saito": {
+                "dep": "TEC",
+                "name": "斎藤 大輝"
+            }
+        });
+        Fetch();
 
     }
 
@@ -36,17 +47,10 @@ class App extends React.Component {
         //     console.log("サインインしてください。");
         //     return false;
         // }
-        window.actions.User({
-            "daiki_saito": {
-                "dep": "TEC",
-                "name": "斎藤 大輝"
-            }
-        });
-        Fetch();
 
     }
 
-    componentDidUpdate() {
+    componentWillUpdate() {
     }
 
     ClickRental(e) {
@@ -56,18 +60,6 @@ class App extends React.Component {
         let target = e.currentTarget,
             id = target.id,
             user = target.dataset.user;
-
-        // let rentalDic = {
-        //         'own': () => {
-        //             this.history.push("/return?deviceid="+id);
-        //         },
-        //         'other': () => { console.log("借りれません") },
-        //         'no': () => {
-        //             this.history.push("/borrow?deviceid="+id);
-        //         }
-        //     }
-
-        // rentalDic[user]();
 
         this.history.push("/rental?deviceid="+id)
 
@@ -106,19 +98,26 @@ class App extends React.Component {
     render() {
 
         this.state = this.props.state;
-        this.history = this.props.history;
 
-        window.actions = this.props.actions;
+        if( !this.Success() ) return false;
 
-        let item = this.Success() ? <Items state={this.state} rental={this.ClickRental.bind(this)} /> : null;
-        let rental = this.Success() ? this.ShowRental() : null;
-        let header = this.Success() ? <Header user={this.state.user} /> : null;
+        let rental = this.ShowRental();
 
         return (
             <div id="contents" className="f-inner">
-                {header}
-                {item}
-                {rental}
+
+                <Header user={this.state.user} />
+                <Items state={this.state} rental={this.ClickRental.bind(this)} />
+
+                <TransitionGroup>
+                    <CSSTransition
+                        key={rental.key}
+                        timeout={300}
+                        classNames="rental">
+                        <div>{rental}</div>
+                    </CSSTransition>
+                </TransitionGroup>
+
             </div>
         );
 

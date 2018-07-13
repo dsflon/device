@@ -6,6 +6,14 @@ class Items extends React.Component {
 
     constructor(props) {
         super(props);
+
+        let date1 = new Date("2018/01/01"),
+            date2 = new Date("2018/01/02"),
+            msDiff = date2.getTime() - date1.getTime();
+
+        this.limit = msDiff * 1;
+        this.today = new Date().getTime();
+
     }
 
     componentWillMount() {
@@ -50,6 +58,10 @@ class Items extends React.Component {
                 </div>
             ) : null;
 
+            let notice = user && this.today - user.timestamp > this.limit ? (
+                <i className={"notice a-icon a-icon_notice" + (user.uid === this.uid ? " a-icon_notice_w" : "")}></i>
+            ) : null;
+
             listDom.push(
                 <li sort={item.sort} key={deviceId} className="list_item">
                     <button
@@ -58,7 +70,7 @@ class Items extends React.Component {
                         data-user={dataUser}
                         data-devicenum={deviceId}
                         data-sim={item.sim}
-                        onClick={this.props.rental.bind(this)}>
+                        onClick={ (user && user.uid !== this.uid ? null : this.props.rental.bind(this)) }>
 
                         <figure className="m-device_image"><img src={item.image} /></figure>
                         <div className="m-device_info">
@@ -66,6 +78,8 @@ class Items extends React.Component {
                             <p className="m-device_os">{item.os}</p>
                             {userDom}
                         </div>
+
+                        {notice}
 
                     </button>
                 </li>
@@ -109,6 +123,10 @@ class Items extends React.Component {
 
         return (
             <div className="lists">
+                <p className="lists_notice">
+                    <i className="a-icon a-icon_notice"></i>
+                    <span className="a-icon_txt">返却期限を過ぎている端末があります</span>
+                </p>
                 {items}
             </div>
         );

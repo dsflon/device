@@ -10,11 +10,10 @@
         height: 50px;
         display: flex;
         align-items: center;
-        // justify-content: space-between;
+        justify-content: space-between;
         padding: 0 15px;
 
         .header_wrap {
-            width: 50%;
             line-height: 1;
             text-align: right;
             .header_btn {
@@ -32,7 +31,6 @@
             }
         }
         .header_ttl {
-            width: 50%;
         }
     }
 

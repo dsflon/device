@@ -65,7 +65,12 @@
                 "os": "android 6.0",
                 "sim": false,
                 "sort": 2,
-                "user": null,
+                "user": {
+                    "uid": "daiki_saito",
+                    "dep": "TEC",
+                    "name": "斎藤 大輝",
+                    "timestamp": 1531452370674
+                },
                 "log": null
             }
         }

@@ -5,8 +5,16 @@
     .lists {
         padding: 0 10px 20px;
 
+        .lists_notice {
+            color: $color_main;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 20px;
+        }
+
         .list {
-            margin-top: 23px;
+            padding-top: 23px;
 
             .list_item {
 
@@ -33,8 +41,15 @@
                     }
                     &[data-user="other"] {
                         box-shadow: none;
+                        pointer-events: none;
                         > * { opacity: 0.4; }
                         &:before { opacity: 0.4; }
+                    }
+
+                    .notice {
+                        position: absolute;
+                        top: 50%; right: 20px;
+                        transform: translate(0,-50%);
                     }
 
                 }

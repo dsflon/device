@@ -4,7 +4,7 @@
 
     .rental {
 
-        &:before {
+        &:after {
             content: '';
             display: block;
             background: rgba(#000,0.6);
@@ -22,7 +22,12 @@
             background: #FFF;
             border-radius: 4px;
             width: calc(100% - 40px);
-            max-width: 640px;
+            max-width: $width_main - 40 + px;
+            // * {
+                will-change: transform;
+                -webkit-backface-visibility:hidden;
+                backface-visibility:hidden;
+            // }
 
             .rental_device {
                 padding: 20px;
@@ -82,6 +87,45 @@
 
         }//.rental_inner
 
+    }
+
+    .rental-enter {
+        .rental {
+            .rental_inner {
+                opacity: 0;
+                transform: translate(-50%,-50%) scale(0.96,0.96);
+            }
+            &:after { opacity: 0; }
+        }
+    }
+    .rental-enter-active {
+        .rental {
+            .rental_inner {
+                transition: all 0.2s ease 0.1s;
+                opacity: 1;
+                transform: translate(-50%,-50%) scale(1.0,1.0);
+            }
+            &:after { transition: all 0.2s ease; opacity: 1; }
+        }
+    }
+    .rental-exit {
+        .rental {
+            .rental_inner {
+                opacity: 1;
+                transform: translate(-50%,-50%) scale(1.0,1.0);
+            }
+            &:after { opacity: 1; }
+        }
+    }
+    .rental-exit-active {
+        .rental {
+            .rental_inner {
+                transition: all 0.2s ease;
+                opacity: 0;
+                transform: translate(-50%,-50%) scale(0.96,0.96);
+            }
+            &:after { transition: all 0.2s ease 0.1s; opacity: 0; }
+        }
     }
 
 
