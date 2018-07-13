@@ -101,11 +101,11 @@
     .rental-enter-active {
         &.rental {
             .rental_inner {
-                transition: all 3.0s ease 0.1s;
+                transition: all 0.2s ease 0.1s;
                 opacity: 1;
                 transform: translate(-50%,-50%) scale(1.0,1.0);
             }
-            &:after { transition: all 3.0s ease; opacity: 1; }
+            &:after { transition: all 0.2s ease; opacity: 1; }
         }
     }
     .rental-exit {
@@ -120,11 +120,11 @@
     .rental-exit-active {
         &.rental {
             .rental_inner {
-                transition: all 3.0s ease;
+                transition: all 0.2s ease;
                 opacity: 0;
                 transform: translate(-50%,-50%) scale(0.96,0.96);
             }
-            &:after { transition: all 3.0s ease 0.1s; opacity: 0; }
+            &:after { transition: all 0.2s ease 0.1s; opacity: 0; }
         }
     }
 

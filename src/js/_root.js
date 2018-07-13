@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Home from './views/home'
 import SignUp from './views/signup'
@@ -9,7 +8,7 @@ import SignIn from './views/signin'
 const GetPages = (props) => {
 
     const {
-        match: { params: { page } }
+        match: { url, params: { page } }
     } = props;
 
     switch (page) {
@@ -21,7 +20,11 @@ const GetPages = (props) => {
         return <SignIn props={props} />
 
         default:
-        return <Home props={props} />
+        return <Route
+                path={`${url}/:deviceId?`}
+                render={ ({match,history}) => (
+                    <Home match={match} history={history} />
+                )} />
 
     }
 
@@ -30,11 +33,12 @@ const GetPages = (props) => {
 const Root = () => (
 
     <Router>
-        <Route path="/:page?" component={GetPages} />
+        <div id="container">
+            <Route path="/:page?" component={GetPages} />
+        </div>
     </Router>
 
 )
-
 
 // const Root = () => (
 //     <Router>
