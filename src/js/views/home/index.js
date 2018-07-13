@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Route } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { bindActionCreators } from 'redux';
@@ -10,6 +11,32 @@ import Header from './_header';
 import Items from './_items';
 import Borrow from './_borrow';
 import Return from './_return';
+
+const ShowRental = (props) => {
+
+    let {state,history,match} = props;
+
+    // let deviceId = match.params.deviceId;
+    let deviceId = history.location.pathname.split(match.url+"/")[1];
+    console.log(deviceId);
+
+    if(!deviceId) return <div />;
+
+    let keys = deviceId.split("_");
+    let item = state.list[keys[0]][keys[1]];
+    let rental = item.user ? item.user.uid : "borrow";
+
+    switch (rental) {
+
+        case 'borrow':
+        return <Borrow deviceId={deviceId} item={item} history={history} user={state.user} />
+
+        case Object.keys(state.user)[0]:
+        return <Return deviceId={deviceId} item={item} history={history} />;
+
+    }
+
+}
 
 class App extends React.Component {
 
@@ -25,7 +52,7 @@ class App extends React.Component {
         //         "name": "斎藤 大輝"
         //     }
         // }));
-        this.history = this.props.history;
+        this.history = this.props.props.history;
         window.actions = this.props.actions;
 
         window.actions.User({
@@ -61,33 +88,7 @@ class App extends React.Component {
             id = target.id,
             user = target.dataset.user;
 
-        this.history.push("/rental?deviceid="+id)
-
-    }
-
-    ShowRental(){
-
-        let rental = this.props.match.params.rental,
-            deviceId = this.props.location.search;
-
-        if(!rental || !deviceId) return false;
-
-            deviceId = deviceId.split("?deviceid=")[1];
-
-        let keys = deviceId.split("_"),
-            item = this.state.list[keys[0]][keys[1]];
-
-            rental = item.user ? item.user.uid : "borrow";
-
-        switch (rental) {
-
-            case 'borrow':
-            return <Borrow key="borrow" deviceId={deviceId} item={item} history={this.history} user={this.state.user} />
-
-            case Object.keys(this.state.user)[0]:
-            return <Return key="return" deviceId={deviceId} item={item} history={this.history} />;
-
-        }
+        this.history.push("/rental/"+id)
 
     }
 
@@ -98,25 +99,53 @@ class App extends React.Component {
     render() {
 
         this.state = this.props.state;
+        let {
+            props: {
+                match,
+                history,
+                match: { params:{page},url },
+                location: { key }
+            }
+        } = this.props;
+
 
         if( !this.Success() ) return false;
 
-        let rental = this.ShowRental();
+        let rentalModal = page ? <ShowRental state={this.state} match={match} history={history} /> : <div />;
 
         return (
-            <div id="contents" className="f-inner">
+            <div id="contents">
 
                 <Header user={this.state.user} />
-                <Items state={this.state} rental={this.ClickRental.bind(this)} />
+
+                <Link to="/signin">Sing In</Link>
+                <Link to="/signup">Sing Up</Link>
+
+                <div className="f-inner">
+                    <Items state={this.state} rental={this.ClickRental.bind(this)} />
+                </div>
 
                 <TransitionGroup>
                     <CSSTransition
-                        key={rental.key}
-                        timeout={300}
+                        key={page ? page : "home"}
+                        timeout={3000}
                         classNames="rental">
-                        <div>{rental}</div>
+                        <ShowRental state={this.state} match={match} history={history} />
                     </CSSTransition>
                 </TransitionGroup>
+
+                {/*<TransitionGroup>
+                    <CSSTransition
+                        key={page ? page : "home"}
+                        timeout={3000}
+                        classNames="rental">
+                        <Route
+                            path={`${url}/:deviceId?`}
+                            render={({match,history}) => (
+                                <ShowRental state={this.state} match={match} history={history} />
+                            )} />
+                    </CSSTransition>
+                </TransitionGroup>*/}
 
             </div>
         );

@@ -18,13 +18,15 @@ class Header extends React.Component {
 
         return (
             <header id="header">
-                <h1 className="header_ttl a-ttl">DEVICE RS</h1>
-                <div className="header_wrap">
-                    <p className="header_user">
-                        {this.user.dep + " - " + this.user.name}
-                        <span> さん</span>
-                    </p>
-                    <button className="header_btn"><img src={icon} /></button>
+                <div id="header_inner" className="f-inner">
+                    <h1 className="header_ttl a-ttl">DEVICE RS</h1>
+                    <div className="header_wrap">
+                        <p className="header_user">
+                            {this.user.dep + " - " + this.user.name}
+                            <span> さん</span>
+                        </p>
+                        <button className="header_btn"><img src={icon} /></button>
+                    </div>
                 </div>
             </header>
         );
