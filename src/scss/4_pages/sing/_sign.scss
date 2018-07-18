@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+.fw #sign {
+
+    padding-top: 10vh;
+
+    .sign_btns {
+        position: fixed;
+        bottom: 0; left: 50%;
+        transform: translate(-50%,0);
+        width: 100%;
+        padding: 0 20px 20px;
+		max-width: $width_main + px;
+    }
+
+    #sign_form {
+
+        position: fixed;
+        top: 48%; left: 50%;
+        transform: translate(-50%,-50%);
+		max-width: $width_main + px;
+        width: 100%;
+        padding: 0 20px;
+
+        .sing_label {
+            display: block;
+            margin-top: 8vh;
+            &:first-child { margin-top: 0; }
+            h2 { margin-bottom: 10px; line-height: 1; }
+        }
+
+        .sing_input {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            align-items: center;
+            input {
+                display: inline-block;
+                width: 60%;
+                height: 46px;
+                font-size: 16px;
+                padding: 5px 10px;
+                outline: none;
+                border: 1px solid $black30;
+                @include placeholder {
+                    font-size: 16px;
+                    color: $black30;
+                }
+            }
+            > span {
+                padding-left: 10px;
+                font-size: 14px;
+                color: $black90;
+            }
+        }
+
+    }
+
+}//.fw

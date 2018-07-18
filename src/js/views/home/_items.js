@@ -105,7 +105,7 @@ class Items extends React.Component {
 
             categoryDom.push(
                 <section key={categoryId} className={"list"}>
-                    <h2 className={"a-ttl a-ttl_m a-ttl_mb list_cat"}>{categoryId}</h2>
+                    <h2 className="a-ttl a-ttl_m a-ttl_mb list_cat">{categoryId}</h2>
                     <ul className="list_items">
                         {this.GetList(items,categoryId)}
                     </ul>

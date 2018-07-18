@@ -18,23 +18,18 @@ class App extends React.Component {
     }
 
     componentWillMount() {
+
         this.storageUser = localStorage.getItem("deviceRentalSystem");
-        // localStorage.setItem("deviceRentalSystem", JSON.stringify({
-        //     "daiki_saito": {
-        //         "dep": "TEC",
-        //         "name": "斎藤 大輝"
-        //     }
-        // }));
+
         this.history = this.props.history;
         window.actions = this.props.actions;
 
-        window.actions.User({
-            "daiki_saito": {
-                "dep": "TEC",
-                "name": "斎藤 大輝"
-            }
-        });
-        Fetch();
+        if(this.storageUser) {
+            window.actions.User( JSON.parse(this.storageUser) );
+            Fetch();
+        } else {
+            location.replace('/signin')
+        }
 
     }
 
@@ -83,12 +78,9 @@ class App extends React.Component {
         if( !this.Success() ) return false;
 
         return (
-            <div id="contents">
+            <div id="home">
 
                 <Header user={this.state.user} />
-
-                <Link to="/signin">Sing In</Link>
-                <Link to="/signup">Sing Up</Link>
 
                 <div className="f-inner">
                     <Items state={this.state} rental={this.ClickRental.bind(this)} />

@@ -2,8 +2,6 @@ import React from 'react';
 import Borrow from './_rental_borrow';
 import Return from './_rental_return';
 
-let flag = true;
-
 const ShowRental = (props) => {
 
     let {

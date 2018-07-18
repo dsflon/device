@@ -33,9 +33,7 @@ const GetPages = (props) => {
 const Root = () => (
 
     <Router>
-        <div id="container">
-            <Route path="/:page?" component={GetPages} />
-        </div>
+        <Route path="/:page?" component={GetPages} />
     </Router>
 
 )

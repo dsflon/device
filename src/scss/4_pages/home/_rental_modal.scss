@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.fw {
+.fw #home {
 
     .rental {
 
@@ -24,7 +24,7 @@
             width: calc(100% - 40px);
             max-width: $width_main - 40 + px;
             // * {
-                will-change: transform;
+                will-change: all;
                 -webkit-backface-visibility:hidden;
                 backface-visibility:hidden;
             // }

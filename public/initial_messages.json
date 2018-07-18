@@ -3,7 +3,7 @@
     "user": {
         "daiki_saito": {
             "dep": "TEC",
-            "name": "斎藤 大輝"
+            "name": "daiki saito"
         }
     },
 
@@ -19,7 +19,7 @@
                 "user": {
                     "uid": "taro_sato",
                     "dep": "EM1",
-                    "name": "佐藤 太郎",
+                    "name": "taro sato",
                     "timestamp": 1459361875666
                 },
                 "log": null
@@ -33,7 +33,7 @@
                 "user": {
                     "uid": "daiki_saito",
                     "dep": "TEC",
-                    "name": "斎藤 大輝",
+                    "name": "daiki saito",
                     "timestamp": 1459361875666
                 },
                 "log": null
@@ -68,7 +68,7 @@
                 "user": {
                     "uid": "daiki_saito",
                     "dep": "TEC",
-                    "name": "斎藤 大輝",
+                    "name": "daiki saito",
                     "timestamp": 1531452370674
                 },
                 "log": null
