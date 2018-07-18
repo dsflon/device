@@ -43,7 +43,8 @@
                         box-shadow: none;
                         pointer-events: none;
                         > * { opacity: 0.4; }
-                        &:before { opacity: 0.4; }
+                        // &:before { opacity: 0.4; }
+                        &:before { opacity: 0.5; background: $black30; color: #FFF; }
                     }
 
                     .notice {

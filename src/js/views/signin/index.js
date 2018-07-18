@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import Sign from '../../common/_sign';
+
 class SignIn extends React.Component {
 
     constructor(props) {
         super(props);
-
-        // this.inputData = {
-        //     dep: null,
-        //     email: null
-        // };
 
         this.state = {
             inputData : {
@@ -19,7 +16,14 @@ class SignIn extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
+
+        this.storageUser = localStorage.getItem("deviceRentalSystem");
+
+        if(this.storageUser) {
+            location.replace('/')
+        }
+
     }
 
     InputDep(e) {
@@ -62,22 +66,7 @@ class SignIn extends React.Component {
     SignIn(e) {
 
         e.preventDefault();
-
-        let signinData = {},
-            inputData = this.state.inputData;
-
-        let key = inputData.email.replace( '.', '_' ),
-            name = inputData.email.replace( '.', ' ' );
-
-        signinData[key] = {
-            "dep": inputData.dep,
-            "name": name
-        }
-        console.log( signinData );
-
-        localStorage.setItem("deviceRentalSystem", JSON.stringify(signinData));
-        // this.history.push("/")
-        location.replace('/')
+        Sign.In(this.state.inputData);
 
     }
 

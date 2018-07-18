@@ -21,6 +21,24 @@
 	    font-size: inherit;
 	}
 
+	input,
+	button,
+	textarea,
+	label,
+	select {
+		outline: 0;
+		appearance: none;
+		border-radius: 0;
+		background: none;
+		font-family: $font_base;
+		line-height: normal;
+		font-size: 16px;
+		-webkit-tap-highlight-color:rgba(0,0,0,0);
+		&:-webkit-autofill { //Chrome オートフィル無効
+			box-shadow: 0 0 0px 1000px #fff inset;
+		}
+	}
+
 	.f-inner {
 		width: 100%;
 		max-width: $width_main + px;

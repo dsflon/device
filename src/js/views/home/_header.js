@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import Log from '../../common/_login_out';
+import Sign from '../../common/_sign';
 import icon from '../../../images/icon_user.svg';
 
 class Header extends React.Component {
@@ -11,6 +11,16 @@ class Header extends React.Component {
 
     componentDidMount() {}
     componentDidUpdate() {}
+
+
+    SignOut(e) {
+
+        e.preventDefault();
+        
+        Sign.Out();
+        location.replace('/signin')
+
+    }
 
     render() {
 
@@ -28,6 +38,7 @@ class Header extends React.Component {
                         <button className="header_btn"><img src={icon} /></button>
                     </div>
                 </div>
+                <button onClick={this.SignOut.bind(this)}>sign out</button>
             </header>
         );
 

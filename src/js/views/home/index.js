@@ -34,18 +34,9 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-
-        // if(this.storageUser) {
-        //     this.storageUser = JSON.parse(this.storageUser);
-        //     window.actions.User(this.storageUser);
-        // } else {
-        //     console.log("サインインしてください。");
-        //     return false;
-        // }
-
     }
 
-    componentWillUpdate(props) {
+    componentWillUpdate() {
     }
 
     ClickRental(e) {
