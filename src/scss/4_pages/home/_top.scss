@@ -2,6 +2,14 @@
 
 .fw #home {
 
+    .lists_wrap {
+        transition: opacity 0.2s ease;
+        &.nav_show {
+            opacity: 0.2;
+            .lists { pointer-events: none; }
+        }
+    }
+
     .lists {
         padding: 0 10px 20px;
 

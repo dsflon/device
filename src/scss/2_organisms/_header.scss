@@ -19,27 +19,6 @@
             &:after { content: none; }
         }
 
-        .header_nav {
-            position: absolute;
-            top: 50px; right: 10px;
-            background: #FFF;
-            padding: 10px 0;
-            z-index: 2;
-            border-radius: 4px;
-            box-shadow: 0 0 10px 0 rgba(#000,0.1);
-            ul {
-                li {
-                    button,a {
-                        display: block;
-                        line-height: 1;
-                        padding: 10px 20px;
-                        font-size: 14px;
-                        color: $color_text;
-                    }
-                }
-            }
-        }
-
         .header_wrap {
             line-height: 1;
             text-align: right;
@@ -49,17 +28,68 @@
                 vertical-align: middle;
                 margin-left: 14px;
             }
-            .header_user {
-                display: inline-block;
-                vertical-align: middle;
-                font-size: 12px;
-                font-family: $font_noto;
-                span { font-size: 10px; color: $black60; }
-            }
-        }
-        .header_ttl {
         }
     }
 
+
+    #header_nav {
+        position: absolute;
+        top: 50px; right: 10px;
+        max-width: 300px;
+        background: #FFF;
+        z-index: 2;
+        box-shadow: 0 0 6px 0 rgba(#000,0.2);
+        border-radius: 4px;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(0,10px);
+        transition: opacity 0.2s ease 0.1s, transform 0.2s ease 0.1s;
+        &.nav_show {
+            opacity: 1;
+            transform: translate(0,0);
+            pointer-events: inherit;
+        }
+        .header_user {
+            height: 50px;
+            padding: 0 20px;
+            background: $color_text;
+            line-height: 1;
+            display: table-cell;
+            vertical-align: middle;
+            color: #FFF;
+            p {
+                display: inline;
+                font-size: 14px;
+                // font-family: $font_noto;
+            }
+            span {
+                display: inline;
+                font-size: 10px;
+            }
+        }
+        ul {
+            li {
+                border-bottom: 1px solid $black10;
+                &:last-child { border-bottom: none; }
+                button,a {
+                    display: block;
+                    width: 100%;
+                    line-height: 1;
+                    padding:  20px;
+                    font-size: 14px;
+                    text-align: left;
+                }
+                a {
+                    color: $color_text;
+                    @include arrowAbs($color: $color_text, $size:8, $width:1, $layout:right, $position:20, $direction:right);
+                }
+                button {
+                    color: $black40;
+                    @include arrowAbs($color: $black40, $size:8, $width:1, $layout:right, $position:20, $direction:right);
+                }
+            }
+        }
+    }
 
 }//.fw

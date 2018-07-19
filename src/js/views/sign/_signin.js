@@ -38,8 +38,9 @@ class SignIn extends React.Component {
 
     Remove(e) {
         e.preventDefault();
-        Sign.Remove();
-        location.replace('/signout')
+        Sign.Remove(() => {
+            location.replace('/signup')
+        });
     }
 
     SignIn(e) {

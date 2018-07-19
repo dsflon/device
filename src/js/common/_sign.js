@@ -7,8 +7,9 @@ const Sign = {
         let signinData = {},
             inputData = data;
 
-        let key = inputData.email.replace( '.', '_' ),
-            name = inputData.email.replace( '.', ' ' );
+        let key = inputData.email.replace('.','_'),
+            name = inputData.email.split('.');
+            name = toUpperFirstLetter(name[0]) + " " + toUpperFirstLetter(name[1])
 
         signinData[key] = {
             "dep": inputData.dep,
@@ -47,7 +48,7 @@ const Sign = {
 
     },
 
-    Out: (data) => {
+    Out: (data,callback) => {
 
         let res = confirm("サインアウトしますか？");
         if( res == true ) {
@@ -56,22 +57,30 @@ const Sign = {
                 signinData[data] = null;
             localStorage.setItem(window.LSName, JSON.stringify(signinData));
 
+            if(callback) callback()
         }
 
     },
 
-    Remove: () => {
+    Remove: (callback) => {
 
         let res = confirm("アカウントを削除しますか？");
 
         if( res == true ) {
 
             localStorage.removeItem(window.LSName);
+            if(callback) callback()
 
         }
 
     }
 
+}
+
+
+
+function toUpperFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
 }
 
 export default Sign;

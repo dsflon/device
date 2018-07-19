@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as ActionCreators from '../../actions';
 
+import Sign from '../../common/_sign';
 import Fetch from '../../common/_fetch';
 import Header from './_header';
 import Items from './_items';
@@ -44,8 +45,36 @@ class App extends React.Component {
     componentWillUpdate() {
     }
 
-    OpenMenu(e) {
+    Remove(e) {
+        e.preventDefault();
+        Sign.Remove(() => {
+            location.replace('/signup')
+        });
+    }
 
+    SignOut(e) {
+        e.preventDefault();
+        Sign.Out( Object.keys(this.state.user)[0], () => {
+            location.replace('/signin')
+        } );
+    }
+
+    OpenMenu(e) {
+        let target = this.refs.header_nav,
+            target2 = this.refs.list_area;
+        if( target.classList.contains("nav_show") ) {
+            target.classList.remove("nav_show")
+            target2.classList.remove("nav_show")
+        } else {
+            target.classList.add("nav_show")
+            target2.classList.add("nav_show")
+        }
+    }
+    CloseMenu(e) {
+        let target = this.refs.header_nav,
+            target2 = this.refs.list_area;
+        target.classList.remove("nav_show")
+        target2.classList.remove("nav_show")
     }
 
     ClickRental(e) {
@@ -77,12 +106,26 @@ class App extends React.Component {
 
         if( !this.Success() ) return false;
 
+        this.user = Object.values(this.state.user)[0];
+
         return (
             <div id="home">
 
-                <Header user={this.state.user} OpenMenu={this.OpenMenu.bind(this)} />
+                <Header OpenMenu={this.OpenMenu.bind(this)} />
 
-                <div className="f-inner">
+                <nav id="header_nav" ref="header_nav">
+                    <div className="header_user">
+                        <p>{this.user.dep + " - " + this.user.name}</p>
+                        <span> さん</span>
+                    </div>
+                    <ul>
+                        <li><Link to="/edit_profile">Edit Profile</Link></li>
+                        <li><button onClick={this.SignOut.bind(this)}>Sign Out</button></li>
+                        <li><button onClick={this.Remove.bind(this)}>Remove Account</button></li>
+                    </ul>
+                </nav>
+
+                <div className="f-inner lists_wrap" ref="list_area" onClick={this.CloseMenu.bind(this)}>
                     <Items state={this.state} rental={this.ClickRental.bind(this)} />
                 </div>
 
