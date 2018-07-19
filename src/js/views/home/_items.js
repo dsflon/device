@@ -43,7 +43,7 @@ class Items extends React.Component {
                             if(user.uid !== this.uid) {
                                 return (
                                     <p className="m-device_user_name">
-                                        {user.dep + " - " + user.name}
+                                        {user.dep + ": " + user.name}
                                         <span> さん</span>
                                     </p>
                                 )
@@ -125,7 +125,7 @@ class Items extends React.Component {
             <div className="lists">
                 <p className="lists_notice">
                     <i className="a-icon a-icon_notice"></i>
-                    <span className="a-icon_txt">返却期限を過ぎている端末があります</span>
+                    <span className="a-icon_txt">返却されていない端末があります</span>
                 </p>
                 {items}
             </div>

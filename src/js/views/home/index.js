@@ -115,7 +115,7 @@ class App extends React.Component {
 
                 <nav id="header_nav" ref="header_nav">
                     <div className="header_user">
-                        <p>{this.user.dep + " - " + this.user.name}</p>
+                        <p>{this.user.dep + ": " + this.user.name}</p>
                         <span> さん</span>
                     </div>
                     <ul>

@@ -50,9 +50,8 @@
                     &[data-user="other"] {
                         box-shadow: none;
                         pointer-events: none;
-                        > * { opacity: 0.4; }
-                        // &:before { opacity: 0.4; }
-                        &:before { opacity: 0.5; background: $black30; color: #FFF; }
+                        > * { opacity: 0.2; }
+                        &:before { opacity: 0.2; background: $black30; color: #FFF; }
                     }
 
                     .notice {
