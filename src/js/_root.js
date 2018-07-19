@@ -16,6 +16,7 @@ const GetPages = (props) => {
 
         case 'signup':
         case 'signin':
+        case 'edit_profile':
         return <Signed props={props} />
 
         // case 'signup':

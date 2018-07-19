@@ -19,7 +19,7 @@ class SignIn extends React.Component {
 
     componentWillMount() {
 
-        this.storageUser = localStorage.getItem("deviceRentalSystem");
+        this.storageUser = localStorage.getItem(window.LSName);
 
         if(this.storageUser) {
             location.replace('/')

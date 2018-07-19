@@ -15,6 +15,8 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
+        this.stuer = localStorage.getItem(window.LSName);
+        this.stuer = JSON.parse(this.stuer);
     }
 
     componentWillMount() {
@@ -22,14 +24,11 @@ class App extends React.Component {
         this.history = this.props.history;
         window.actions = this.props.actions;
 
-        let storageUser = localStorage.getItem("deviceRentalSystem");
-            storageUser = JSON.parse(storageUser);
-
-        if(storageUser && Object.values(storageUser)[0] ) {
+        if(this.stuer && Object.values(this.stuer)[0] ) {
             // 既サインイン時
-            window.actions.User( storageUser );
+            window.actions.User( this.stuer );
             Fetch();
-        } else if( storageUser && !Object.values(storageUser)[0] ) {
+        } else if( this.stuer && !Object.values(this.stuer)[0] ) {
             // サインアウト時
             location.replace('/signin');
         } else {
@@ -43,6 +42,10 @@ class App extends React.Component {
     }
 
     componentWillUpdate() {
+    }
+
+    OpenMenu(e) {
+
     }
 
     ClickRental(e) {
@@ -77,7 +80,7 @@ class App extends React.Component {
         return (
             <div id="home">
 
-                <Header user={this.state.user} />
+                <Header user={this.state.user} OpenMenu={this.OpenMenu.bind(this)} />
 
                 <div className="f-inner">
                     <Items state={this.state} rental={this.ClickRental.bind(this)} />

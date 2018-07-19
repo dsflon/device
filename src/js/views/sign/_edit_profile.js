@@ -4,47 +4,35 @@ import { Link } from "react-router-dom";
 import Sign from '../../common/_sign';
 import Validate from '../../common/_validate';
 
-class SignIn extends React.Component {
+class EditProfile extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.stuer = localStorage.getItem(window.LSName);
         this.stuer = JSON.parse(this.stuer);
-
-    }
-
-    componentWillMount() {
-        this.PageRedirect()
     }
 
     componentDidMount() {
 
         if(this.stuer) {
-            let stuer = Object.keys(this.stuer)[0];
-            this.value = stuer.replace("_", ".");
-            this.refs.input_email.value = this.value;
-            this.props.InputEmail(this.refs.input_email)
+            let key = Object.keys(this.stuer)[0],
+                dep = this.stuer[key].dep,
+                email = key.replace("_", ".");
+
+            this.refs.input_dep.value = dep;
+            this.refs.input_email.value = email;
+            this.props.InputEmail(this.refs.input_email);
+            this.props.InputDep(this.refs.input_dep);
         }
     }
 
-    PageRedirect() {
+    Save(e) {
 
-        if( this.stuer && Object.values(this.stuer)[0] ) {
-            location.replace('/');
-        }
-
-    }
-
-    Remove(e) {
         e.preventDefault();
-        Sign.Remove();
-        location.replace('/signout')
-    }
+        Sign.Up(this.state.inputData);
+        this.history.push("/");
 
-    SignIn(e) {
-        e.preventDefault();
-        Sign.In(this.state.inputData);
     }
 
     render() {
@@ -57,14 +45,28 @@ class SignIn extends React.Component {
         return (
             <div id="sign">
 
-                <h1 className="sign_ttl a-ttl a-ttl_l">Sign In</h1>
+                <h1 className="sign_ttl a-ttl a-ttl_l">Edit profile</h1>
 
                 <form id="sign_form" ref="sign_form">
+
+                    <div className="sing_label">
+                        <h2>部署名</h2>
+                        <div className="sing_input">
+                            <input
+                                name="dep"
+                                input="email"
+                                placeholder="EM1, TEC, etc."
+                                ref="input_dep"
+                                onInput={this.props.InputDep.bind(this)} />
+                        </div>
+                        <p className="sing_error">{this.state.error.dep}</p>
+                    </div>
 
                     <div className="sing_label">
                         <h2>メールアドレス</h2>
                         <div className="sing_input">
                             <input
+                                disabled
                                 name="email"
                                 input="email"
                                 placeholder=""
@@ -79,21 +81,17 @@ class SignIn extends React.Component {
 
                 <div className="sign_btns">
                     <div className="a-btn_col">
-                        {(() => {
-
-                            if( this.value ) {
-                                return <button className="a-btn f-font_s" onClick={this.Remove.bind(this)}>アカウントを<br />削除する</button>
-                            } else {
-                                return <Link to="/signup" className="a-btn">Back</Link>
-                            }
-
-                        })()}
+                        <Link
+                            to="/"
+                            className="a-btn">
+                            Back
+                        </Link>
                         <button
                             disabled={ !btnValidate ? "disabled" : "" }
                             ref="sign_btn"
                             className="a-btn a-btn_red"
-                            onClick={this.SignIn.bind(this)}>
-                            Sign In
+                            onClick={this.Save.bind(this)}>
+                            Save
                         </button>
                     </div>
                 </div>
@@ -105,4 +103,4 @@ class SignIn extends React.Component {
 
 }
 
-export default SignIn;
+export default EditProfile;

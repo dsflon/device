@@ -8,12 +8,31 @@ class SignUp extends React.Component {
 
     constructor(props) {
         super(props);
+        this.stuer = localStorage.getItem(window.LSName);
+        this.stuer = JSON.parse(this.stuer);
+    }
+
+    componentWillMount() {
+        this.PageRedirect()
+    }
+
+    PageRedirect() {
+
+        if( this.stuer && Object.values(this.stuer)[0] ) {
+            // 既サインイン時
+            location.replace('/');
+        } else if( this.stuer && !Object.values(this.stuer)[0] ) {
+            // サインアウト時
+            location.replace('/signin');
+        }
+
     }
 
     SignUp(e) {
 
         e.preventDefault();
         Sign.Up(this.state.inputData);
+        location.replace('/')
 
     }
 

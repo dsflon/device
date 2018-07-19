@@ -2,6 +2,7 @@ import React from 'react';
 
 import SignUp from './_signup'
 import SignIn from './_signin'
+import EditProfile from './_edit_profile'
 import Validate from '../../common/_validate';
 
 class Signed extends React.Component {
@@ -13,6 +14,10 @@ class Signed extends React.Component {
                 inputData : { dep: null, email: null },
                 error: { dep: null, email: null }
             },
+            edit_profile: {
+                inputData : { dep: null, email: null },
+                error: { dep: null, email: null }
+            },
             signin: {
                 inputData : { email: null },
                 error: { email: null }
@@ -21,28 +26,8 @@ class Signed extends React.Component {
     }
 
     componentWillMount() {
-        this.PageRedirect();
     }
     componentDidUpdate() {
-        this.PageRedirect();
-    }
-
-    PageRedirect() {
-
-        let { match: { params: { page } } } = this.props.props;
-        this.page = page;
-
-        let storageUser = localStorage.getItem("deviceRentalSystem");
-            storageUser = JSON.parse(storageUser);
-
-        if( storageUser && Object.values(storageUser)[0] ) {
-            // 既サインイン時
-            location.replace('/');
-        } else if( storageUser && !Object.values(storageUser)[0] && this.page !== "signin" ) {
-            // サインアウト時
-            location.replace('/signin');
-        }
-
     }
 
     InputDep(e) {
@@ -113,6 +98,14 @@ class Signed extends React.Component {
             return <SignIn
                 props={this.props.props}
                 state={this.state[this.page]}
+                InputEmail={this.InputEmail.bind(this)}
+                BtnValidate={this.BtnValidate.bind(this)} />
+
+            case 'edit_profile':
+            return <EditProfile
+                props={this.props.props}
+                state={this.state[this.page]}
+                InputDep={this.InputDep.bind(this)}
                 InputEmail={this.InputEmail.bind(this)}
                 BtnValidate={this.BtnValidate.bind(this)} />
 

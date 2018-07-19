@@ -15,8 +15,9 @@ const Sign = {
             "name": name
         }
 
-        localStorage.setItem("deviceRentalSystem", JSON.stringify(signinData));
-        location.replace('/')
+        console.log(signinData);
+
+        localStorage.setItem(window.LSName, JSON.stringify(signinData));
 
     },
 
@@ -41,7 +42,7 @@ const Sign = {
         //     "name": name
         // }
         //
-        // localStorage.setItem("deviceRentalSystem", JSON.stringify(signinData));
+        // localStorage.setItem(window.LSName, JSON.stringify(signinData));
         // location.replace('/')
 
     },
@@ -53,8 +54,7 @@ const Sign = {
 
             let signinData = {};
                 signinData[data] = null;
-            localStorage.setItem("deviceRentalSystem", JSON.stringify(signinData));
-            location.replace('/signin')
+            localStorage.setItem(window.LSName, JSON.stringify(signinData));
 
         }
 
@@ -66,8 +66,7 @@ const Sign = {
 
         if( res == true ) {
 
-            localStorage.removeItem("deviceRentalSystem");
-            location.replace('/signout')
+            localStorage.removeItem(window.LSName);
 
         }
 

@@ -38,13 +38,13 @@ const validate = {
     dep: (val) => {
 
         if(!val) return false;
-        let checker = !CheckCharType(val,"alphabetic") ? "alphabetic" : true;
+        let checker = !CheckCharType(val,"alphanumeric") ? "alphanumeric" : true;
 
         switch (checker) {
 
-            case "alphabetic":
+            case "alphanumeric":
             return {
-                type: "alphabetic",
+                type: "alphanumeric",
                 message:"全角文字が入力されています"
             };
 

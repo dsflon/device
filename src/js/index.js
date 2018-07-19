@@ -63,6 +63,7 @@ window.onload = () => {
     // window.messagesRef = window.database.ref('device');
     /* Firebase Initialize */
 
+    window.LSName = "deviceRentalSystem";
     window.CheckNetwork = CheckNetwork;
 
     /*
