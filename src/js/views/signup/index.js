@@ -96,11 +96,11 @@ class SignUp extends React.Component {
         return (
             <div id="sign">
 
-                <h1 className="a-ttl a-ttl_l a-ttl_mb">Sign Up</h1>
+                <h1 className="sign_ttl a-ttl a-ttl_l">Sign Up</h1>
 
                 <form id="sign_form" ref="sign_form">
 
-                    <label className="sing_label">
+                    <div className="sing_label">
                         <h2>部署名</h2>
                         <div className="sing_input">
                             <input
@@ -111,9 +111,9 @@ class SignUp extends React.Component {
                                 onInput={this.InputDep.bind(this)} />
                         </div>
                         <p className="sing_error">{this.state.error.dep}</p>
-                    </label>
+                    </div>
 
-                    <label className="sing_label">
+                    <div className="sing_label">
                         <h2>メールアドレス</h2>
                         <div className="sing_input">
                             <input
@@ -125,7 +125,7 @@ class SignUp extends React.Component {
                             <span>@isobar.com</span>
                         </div>
                         <p className="sing_error">{this.state.error.email}</p>
-                    </label>
+                    </div>
 
                 </form>
 

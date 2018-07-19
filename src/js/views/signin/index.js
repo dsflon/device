@@ -67,11 +67,11 @@ class SignIn extends React.Component {
         return (
             <div id="sign">
 
-                <h1 className="a-ttl a-ttl_l a-ttl_mb">Sign In</h1>
+                <h1 className="sign_ttl a-ttl a-ttl_l">Sign In</h1>
 
                 <form id="sign_form" ref="sign_form">
 
-                    <label className="sing_label">
+                    <div className="sing_label">
                         <h2>メールアドレス</h2>
                         <div className="sing_input">
                             <input
@@ -82,7 +82,7 @@ class SignIn extends React.Component {
                                 onInput={this.InputEmail.bind(this)} />
                             <span>@isobar.com</span>
                         </div>
-                    </label>
+                    </div>
 
                 </form>
 

@@ -25,7 +25,7 @@ const validate = {
             case "@":
             return {
                 type: "@",
-                message:"'@' は不要です"
+                message:"'@' 以降は不要です"
             };
 
             default:
