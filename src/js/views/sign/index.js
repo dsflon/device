@@ -21,13 +21,33 @@ class Signed extends React.Component {
     }
 
     componentWillMount() {
-        this.storageUser = localStorage.getItem("deviceRentalSystem");
-        if(this.storageUser) location.replace('/')
+        this.PageRedirect();
+    }
+    componentDidUpdate() {
+        this.PageRedirect();
+    }
+
+    PageRedirect() {
+
+        let { match: { params: { page } } } = this.props.props;
+        this.page = page;
+
+        let storageUser = localStorage.getItem("deviceRentalSystem");
+            storageUser = JSON.parse(storageUser);
+
+        if( storageUser && Object.values(storageUser)[0] ) {
+            // 既サインイン時
+            location.replace('/');
+        } else if( storageUser && !Object.values(storageUser)[0] && this.page !== "signin" ) {
+            // サインアウト時
+            location.replace('/signin');
+        }
+
     }
 
     InputDep(e) {
 
-        let target = e.currentTarget,
+        let target = e.currentTarget ? e.currentTarget : e,
             key = target.name,
             val = target.value.toUpperCase();
 
@@ -45,7 +65,7 @@ class Signed extends React.Component {
     }
     InputEmail(e) {
 
-        let target = e.currentTarget,
+        let target = e.currentTarget ? e.currentTarget : e,
             key = target.name,
             val = target.value.toLowerCase();
 
@@ -76,13 +96,10 @@ class Signed extends React.Component {
 
     render() {
 
-        let {
-            match: { params: { page } }
-        } = this.props.props;
-
+        let { match: { params: { page } } } = this.props.props;
         this.page = page;
 
-        switch (page) {
+        switch (this.page) {
 
             case 'signup':
             return <SignUp

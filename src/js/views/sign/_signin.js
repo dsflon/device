@@ -10,13 +10,24 @@ class SignIn extends React.Component {
         super(props);
     }
 
-    SignIn(e) {
+    componentDidMount() {
+        let storageUser = localStorage.getItem("deviceRentalSystem");
+        if(storageUser) {
+            storageUser = Object.keys(JSON.parse(storageUser))[0];
+            this.value = storageUser.replace("_", ".");
+            this.refs.input_email.value = this.value;
+            this.props.InputEmail(this.refs.input_email)
+        }
+    }
 
+    Remove(e) {
         e.preventDefault();
-        // Sign.In(this.state.inputData);
+        Sign.Remove();
+    }
 
-        alert("sing In 処理")
-
+    SignIn(e) {
+        e.preventDefault();
+        Sign.In(this.state.inputData);
     }
 
     render() {
@@ -51,11 +62,15 @@ class SignIn extends React.Component {
 
                 <div className="sign_btns">
                     <div className="a-btn_col">
-                        <Link
-                            to="/signup"
-                            className="a-btn">
-                            Back
-                        </Link>
+                        {(() => {
+
+                            if( this.value ) {
+                                return <button className="a-btn f-font_s" onClick={this.Remove.bind(this)}>アカウントを<br />削除する</button>
+                            } else {
+                                return <Link to="/signup" className="a-btn">Back</Link>
+                            }
+
+                        })()}
                         <button
                             disabled={ !btnValidate ? "disabled" : "" }
                             ref="sign_btn"

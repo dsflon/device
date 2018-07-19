@@ -19,16 +19,22 @@ class App extends React.Component {
 
     componentWillMount() {
 
-        this.storageUser = localStorage.getItem("deviceRentalSystem");
-
         this.history = this.props.history;
         window.actions = this.props.actions;
 
-        if(this.storageUser) {
-            window.actions.User( JSON.parse(this.storageUser) );
+        let storageUser = localStorage.getItem("deviceRentalSystem");
+            storageUser = JSON.parse(storageUser);
+
+        if(storageUser && Object.values(storageUser)[0] ) {
+            // 既サインイン時
+            window.actions.User( storageUser );
             Fetch();
+        } else if( storageUser && !Object.values(storageUser)[0] ) {
+            // サインアウト時
+            location.replace('/signin');
         } else {
-            location.replace('/signup')
+            // アカウント無し時
+            location.replace('/signup');
         }
 
     }

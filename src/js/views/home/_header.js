@@ -13,12 +13,17 @@ class Header extends React.Component {
     componentDidUpdate() {}
 
 
+    Remove(e) {
+
+        e.preventDefault();
+        Sign.Remove();
+
+    }
+
     SignOut(e) {
 
         e.preventDefault();
-        
-        Sign.Out();
-        location.replace('/signin')
+        Sign.Out( Object.keys(this.props.user)[0] );
 
     }
 
@@ -38,7 +43,8 @@ class Header extends React.Component {
                         <button className="header_btn"><img src={icon} /></button>
                     </div>
                 </div>
-                <button onClick={this.SignOut.bind(this)}>sign out</button>
+                <div><button onClick={this.Remove.bind(this)}>アカウント削除</button></div>
+                <div><button onClick={this.SignOut.bind(this)}>sign out</button></div>
             </header>
         );
 

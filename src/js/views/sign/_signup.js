@@ -13,7 +13,7 @@ class SignUp extends React.Component {
     SignUp(e) {
 
         e.preventDefault();
-        Sign.In(this.state.inputData);
+        Sign.Up(this.state.inputData);
 
     }
 
