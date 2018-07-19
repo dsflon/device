@@ -1,23 +1,89 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import Sign from '../../common/_sign';
+import Validate from '../../common/_validate';
+
 class SignUp extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            inputData : {
+                dep: null,
+                email: null
+            },
+            error: {
+                dep: null,
+                email: null
+            }
+        };
     }
 
-    componentDidMount() {
+    componentWillMount() {
+
+        this.storageUser = localStorage.getItem("deviceRentalSystem");
+
+        if(this.storageUser) {
+            location.replace('/')
+        }
+
     }
 
-    componentDidUpdate() {
+    InputDep(e) {
+
+        let target = e.currentTarget,
+            key = target.name,
+            val = target.value.toUpperCase();
+
+        let validate = Validate.dep(val);
+
+        let inputData = this.state.inputData;
+            inputData[key] = val;
+
+        let error = this.state.error;
+            error[key] = validate !== true ? validate.message : null;
+
+        this.setState(error);
+        this.setState(inputData);
+
+    }
+    InputEmail(e) {
+
+        let target = e.currentTarget,
+            key = target.name,
+            val = target.value.toLowerCase();
+
+        let validate = Validate.mail(val);
+
+        let error = this.state.error;
+            error[key] = validate !== true ? validate.message : null;
+
+        let inputData = this.state.inputData;
+            inputData[key] = !error[key] ? val : null; // エラーだったらnullにする
+
+        this.setState(error);
+        this.setState(inputData);
+
     }
 
-    SignIn(e) {
+    BtnValidate() {
+
+        let btnFlag = true;
+
+        for (var key in this.state.inputData) {
+            if(!this.state.inputData[key]) btnFlag = false;
+        }
+
+        return btnFlag;
+
+    }
+
+    SignUp(e) {
 
         e.preventDefault();
-
-        this.history.push("/")
+        Sign.In(this.state.inputData);
 
     }
 
@@ -25,28 +91,40 @@ class SignUp extends React.Component {
 
         this.history = this.props.props.history;
 
-        console.log(this.history);
+        let btnValidate = this.BtnValidate();
 
         return (
             <div id="sign">
 
                 <h1 className="a-ttl a-ttl_l a-ttl_mb">Sign Up</h1>
 
-                <form id="singup">
+                <form id="sign_form" ref="sign_form">
 
                     <label className="sing_label">
                         <h2>部署名</h2>
                         <div className="sing_input">
-                            <input name="dep" input="email" placeholder="EM1, TEC, etc." />
+                            <input
+                                name="dep"
+                                input="email"
+                                placeholder="EM1, TEC, etc."
+                                ref="input_dep"
+                                onInput={this.InputDep.bind(this)} />
                         </div>
+                        <p className="sing_error">{this.state.error.dep}</p>
                     </label>
 
                     <label className="sing_label">
                         <h2>メールアドレス</h2>
                         <div className="sing_input">
-                            <input name="email" input="email" placeholder="" />
+                            <input
+                                name="email"
+                                input="email"
+                                placeholder=""
+                                ref="input_email"
+                                onKeyUp={this.InputEmail.bind(this)} />
                             <span>@isobar.com</span>
                         </div>
+                        <p className="sing_error">{this.state.error.email}</p>
                     </label>
 
                 </form>
@@ -59,9 +137,10 @@ class SignUp extends React.Component {
                             既にアカウントを<br />お持ちの方
                         </Link>
                         <button
-                            disabled="disabled"
+                            disabled={ !btnValidate ? "disabled" : "" }
+                            ref="sign_btn"
                             className="a-btn a-btn_red"
-                            onClick={this.SignIn.bind(this)}>
+                            onClick={this.SignUp.bind(this)}>
                             Sign Up
                         </button>
                     </div>

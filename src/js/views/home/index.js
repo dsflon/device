@@ -28,7 +28,7 @@ class App extends React.Component {
             window.actions.User( JSON.parse(this.storageUser) );
             Fetch();
         } else {
-            location.replace('/signin')
+            location.replace('/signup')
         }
 
     }

@@ -26,18 +26,6 @@ class SignIn extends React.Component {
 
     }
 
-    InputDep(e) {
-
-        let target = e.currentTarget,
-            key = target.name,
-            val = target.value.toUpperCase();
-
-        let inputData = this.state.inputData;
-            inputData[key] = val;
-
-        this.setState(inputData);
-
-    }
     InputEmail(e) {
 
         let target = e.currentTarget,
@@ -84,18 +72,6 @@ class SignIn extends React.Component {
                 <form id="sign_form" ref="sign_form">
 
                     <label className="sing_label">
-                        <h2>部署名</h2>
-                        <div className="sing_input">
-                            <input
-                                name="dep"
-                                input="email"
-                                placeholder="EM1, TEC, etc."
-                                ref="input_dep"
-                                onInput={this.InputDep.bind(this)} />
-                        </div>
-                    </label>
-
-                    <label className="sing_label">
                         <h2>メールアドレス</h2>
                         <div className="sing_input">
                             <input
@@ -111,12 +87,12 @@ class SignIn extends React.Component {
                 </form>
 
                 <div className="sign_btns">
-                    {/*<div className="a-btn_col">*/}
-                        {/*<Link
-                            to="/signin"
-                            className="f-font_s a-btn a-btn_line_red">
-                            既にアカウントを<br />お持ちの方
-                        </Link>*/}
+                    <div className="a-btn_col">
+                        <Link
+                            to="/signup"
+                            className="a-btn">
+                            Back
+                        </Link>
                         <button
                             disabled={ !btnValidate ? "disabled" : "" }
                             ref="sign_btn"
@@ -124,7 +100,7 @@ class SignIn extends React.Component {
                             onClick={this.SignIn.bind(this)}>
                             Sign In
                         </button>
-                    {/*</div>*/}
+                    </div>
                 </div>
 
             </div>
