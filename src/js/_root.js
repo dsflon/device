@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Home from './views/home'
-import SignUp from './views/signup'
-import SignIn from './views/signin'
+// import SignUp from './views/signup'
+// import SignIn from './views/signin'
+import Signed from './views/sign'
 
 const GetPages = (props) => {
 
@@ -14,10 +15,14 @@ const GetPages = (props) => {
     switch (page) {
 
         case 'signup':
-        return <SignUp props={props} />
-
         case 'signin':
-        return <SignIn props={props} />
+        return <Signed props={props} />
+
+        // case 'signup':
+        // return <SignUp props={props} />
+        //
+        // case 'signin':
+        // return <SignIn props={props} />
 
         default:
         return <Route
