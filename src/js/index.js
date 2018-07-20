@@ -87,10 +87,11 @@ const BodyMessage = (message) => {
     if(!message) return false;
 
     let target = document.getElementById('app');
-
     target.dataset.message = message;
-    target.classList.add("show_message")
 
+    setTimeout( () => {
+        target.classList.add("show_message")
+    }, 1)
     setTimeout( () => {
         target.classList.remove("show_message");
         target.addEventListener("transitionend", TransitionEnd)

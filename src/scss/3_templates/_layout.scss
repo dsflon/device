@@ -45,29 +45,36 @@
 		margin: 0 auto;
 	}
 
-	[data-message]:before {
-		content: attr(data-message);
-		background: $color_text;
-		color: #FFF;
-		position: fixed;
-		left: 50%; top: 30px;
-		max-width: 300px;
-		display: table;
-		line-height: 1;
-		padding: 8px 15px;
-		border-radius: 4px;
-		font-weight: bold;
-		// box-shadow: 0 0 20px 0 rgba(#000,0.4);
-		z-index: 9999;
-		transform: translate(-50%,-150%);
-		transition: opacity 0.4s ease, transform 0.4s ease;
-		opacity: 0;
-		pointer-events: none;
+	#app {
+		&:before {
+		}
 	}
-	.show_message {
-		&[data-message]:before {
-			opacity: 1;
-			transform: translate(-50%,0);
+
+	#app[data-message] {
+		&:before {
+			content: attr(data-message);
+			background: $color_text;
+			color: #FFF;
+			position: fixed;
+			left: 50%; top: 30px;
+			max-width: 300px;
+			display: table;
+			line-height: 1;
+			padding: 8px 15px;
+			border-radius: 4px;
+			font-weight: bold;
+			// box-shadow: 0 0 20px 0 rgba(#000,0.4);
+			z-index: 9999;
+			opacity: 0;
+			pointer-events: none;
+			transform: translate(-50%,-200%);
+			transition: opacity 0.4s ease, transform 0.4s ease;
+		}
+		&.show_message {
+			&[data-message]:before {
+				opacity: 1;
+				transform: translate(-50%,0);
+			}
 		}
 	}
 
