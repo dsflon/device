@@ -12,13 +12,15 @@ const Do = (history,e) => {
     e.preventDefault();
 
     let deviceId = e.currentTarget.id,
+        deviceName = e.currentTarget.dataset.devicename,
         keyCat = deviceId.split("_")[0],
         keyNum = deviceId.split("_")[1];
-    console.log(keyCat,keyNum);
+        window.Loading.Show();
 
     setTimeout( () => {
-        console.log(deviceId+"は返却されました。");
         history.push("/")
+        window.BodyMessage(deviceName + " を返却しました。");
+        window.Loading.Hide();
     }, 1000)
 
 }
@@ -59,6 +61,7 @@ const Return = ({deviceId,item,history}) => {
                         <button
                             id={deviceId}
                             className="a-btn a-btn_red"
+                            data-devicename={item.name}
                             onClick={Do.bind(this,history)}>
                             はい
                         </button>

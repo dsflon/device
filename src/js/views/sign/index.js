@@ -25,11 +25,6 @@ class Signed extends React.Component {
         };
     }
 
-    componentWillMount() {
-    }
-    componentDidUpdate() {
-    }
-
     InputDep(e) {
 
         let target = e.currentTarget ? e.currentTarget : e,
@@ -38,11 +33,11 @@ class Signed extends React.Component {
 
         let validate = Validate.dep(val);
 
-        let inputData = this.state[this.page].inputData;
-            inputData[key] = val;
-
         let error = this.state[this.page].error;
             error[key] = validate !== true ? validate.message : null;
+
+        let inputData = this.state[this.page].inputData;
+            inputData[key] = !error[key] ? val : null; // エラーだったらnullにする
 
         this.setState(error);
         this.setState(inputData);

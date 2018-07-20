@@ -70,7 +70,7 @@ class Items extends React.Component {
                         data-user={dataUser}
                         data-devicenum={deviceId}
                         data-sim={item.sim}
-                        onClick={ (user && user.uid !== this.uid ? null : this.props.rental.bind(this)) }>
+                        onClick={ this.props.rental.bind(this) }>
 
                         <figure className="m-device_image"><img src={item.image} /></figure>
                         <div className="m-device_info">

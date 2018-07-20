@@ -56,7 +56,7 @@ class SignIn extends React.Component {
         let btnValidate = this.props.BtnValidate();
 
         return (
-            <div id="sign">
+            <div id="sign" className="contents">
 
                 <h1 className="sign_ttl a-ttl a-ttl_l">Sign In</h1>
 

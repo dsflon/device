@@ -85,7 +85,11 @@ class App extends React.Component {
             id = target.id,
             user = target.dataset.user;
 
-        this.history.push("/rental/"+id)
+        if(user !== "other") {
+            this.history.push("/rental/"+id);
+        } else {
+            window.BodyMessage("この端末は貸出中です");
+        }
 
     }
 
@@ -109,7 +113,7 @@ class App extends React.Component {
         this.user = Object.values(this.state.user)[0];
 
         return (
-            <div id="home">
+            <div id="home" className="contents">
 
                 <Header OpenMenu={this.OpenMenu.bind(this)} />
 

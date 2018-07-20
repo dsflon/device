@@ -78,6 +78,42 @@ window.onload = () => {
 
 };
 
+
+/*
+** Body Messaege
+*/
+const BodyMessage = (message) => {
+
+    if(!message) return false;
+
+    let target = document.getElementById('app');
+
+    target.dataset.message = message;
+    target.classList.add("show_message")
+
+    setTimeout( () => {
+        target.classList.remove("show_message");
+        target.addEventListener("transitionend", TransitionEnd)
+    }, 2000)
+
+    function TransitionEnd() {
+        target.dataset.message = "";
+        target.removeEventListener("transitionend", TransitionEnd)
+    }
+
+}
+/*
+** Loading
+*/
+const Loading = {
+    Show: () => { document.body.classList.add("loading") },
+    Hide: () => { document.body.classList.remove("loading") }
+}
+
+window.BodyMessage = BodyMessage;
+window.Loading = Loading;
+
+
 /*
 ** Service Worker
 */

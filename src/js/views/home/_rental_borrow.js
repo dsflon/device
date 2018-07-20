@@ -12,13 +12,15 @@ const Do = (history,user,e) => {
     e.preventDefault();
 
     let deviceId = e.currentTarget.id,
+        deviceName = e.currentTarget.dataset.devicename,
         keyCat = deviceId.split("_")[0],
         keyNum = deviceId.split("_")[1];
-    console.log(keyCat,keyNum,user);
+        window.Loading.Show();
 
     setTimeout( () => {
-        console.log(deviceId+"を借りました。");
         history.push("/")
+        window.BodyMessage(deviceName + " を借りました。");
+        window.Loading.Hide();
     }, 1000)
 
 }
@@ -60,6 +62,7 @@ const Borrow = ({deviceId,item,history,user}) => {
                         <button
                             id={deviceId}
                             className="a-btn a-btn_black"
+                            data-devicename={item.name}
                             onClick={Do.bind(this,history,user)}>
                             はい
                         </button>
