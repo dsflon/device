@@ -19,7 +19,7 @@ const Do = (history,user,e) => {
 
     setTimeout( () => {
         history.push("/")
-        window.BodyMessage(deviceName + " を借りました。");
+        window.BodyMessage(deviceName + " を借りました");
         window.Loading.Hide();
     }, 1000)
 

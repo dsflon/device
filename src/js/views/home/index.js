@@ -39,12 +39,6 @@ class App extends React.Component {
 
     }
 
-    componentDidMount() {
-    }
-
-    componentWillUpdate() {
-    }
-
     Remove(e) {
         e.preventDefault();
         Sign.Remove(() => {
@@ -83,12 +77,13 @@ class App extends React.Component {
 
         let target = e.currentTarget,
             id = target.id,
+            deviceName = target.dataset.devicename,
             user = target.dataset.user;
 
         if(user !== "other") {
             this.history.push("/rental/"+id);
         } else {
-            window.BodyMessage("この端末は貸出中です");
+            window.BodyMessage(deviceName+" は貸出中です");
         }
 
     }
@@ -118,12 +113,11 @@ class App extends React.Component {
                 <Header OpenMenu={this.OpenMenu.bind(this)} />
 
                 <nav id="header_nav" ref="header_nav">
-                    <div className="header_user">
+                    <Link to="/edit_profile" className="header_user">
                         <p>{this.user.dep + ": " + this.user.name}</p>
                         <span> さん</span>
-                    </div>
+                    </Link>
                     <ul>
-                        <li><Link to="/edit_profile">Edit Profile</Link></li>
                         <li><button onClick={this.SignOut.bind(this)}>Sign Out</button></li>
                         <li><button onClick={this.Remove.bind(this)}>Remove Account</button></li>
                     </ul>

@@ -69,6 +69,7 @@ class Items extends React.Component {
                         className="list_item_btn m-device"
                         data-user={dataUser}
                         data-devicenum={deviceId}
+                        data-devicename={item.name}
                         data-sim={item.sim}
                         onClick={ this.props.rental.bind(this) }>
 

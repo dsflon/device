@@ -52,16 +52,16 @@
         }
         .header_user {
             height: 50px;
-            padding: 0 20px;
+            padding: 0 40px 0 20px;
             background: $color_text;
             line-height: 1;
             display: table-cell;
             vertical-align: middle;
             color: #FFF;
+            @include arrowAbs($color: #FFF, $size:8, $width:1, $layout:right, $position:20, $direction:right);
             p {
                 display: inline;
                 font-size: 14px;
-                // font-family: $font_noto;
             }
             span {
                 display: inline;
@@ -85,8 +85,8 @@
                     @include arrowAbs($color: $color_text, $size:8, $width:1, $layout:right, $position:20, $direction:right);
                 }
                 button {
-                    color: $black40;
-                    @include arrowAbs($color: $black40, $size:8, $width:1, $layout:right, $position:20, $direction:right);
+                    color: $color_text;
+                    @include arrowAbs($color: $color_text, $size:8, $width:1, $layout:right, $position:20, $direction:right);
                 }
             }
         }
