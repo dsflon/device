@@ -30,8 +30,12 @@ class EditProfile extends React.Component {
     Save(e) {
 
         e.preventDefault();
-        Sign.Up(this.state.inputData);
-        this.history.push("/");
+        window.Loading.Show();
+
+        Sign.Up(this.state.inputData, () => {
+            this.history.push("/");
+            window.Loading.Hide();
+        });
 
     }
 

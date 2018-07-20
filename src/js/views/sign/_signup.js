@@ -31,8 +31,12 @@ class SignUp extends React.Component {
     SignUp(e) {
 
         e.preventDefault();
-        Sign.Up(this.state.inputData);
-        location.replace('/')
+        window.Loading.Show();
+
+        Sign.Up(this.state.inputData, () => {
+            this.history.push("/");
+            window.Loading.Hide();
+        });
 
     }
 

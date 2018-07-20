@@ -35,7 +35,7 @@
     #header_nav {
         position: absolute;
         top: 50px; right: 10px;
-        max-width: 300px;
+        max-width: calc(100% - 20px);
         background: #FFF;
         z-index: 2;
         box-shadow: 0 0 6px 0 rgba(#000,0.2);
@@ -52,7 +52,7 @@
         }
         .header_user {
             height: 50px;
-            padding: 0 40px 0 20px;
+            padding: 0 42px 0 20px;
             background: $color_text;
             line-height: 1;
             display: table-cell;
@@ -82,11 +82,11 @@
                 }
                 a {
                     color: $color_text;
-                    @include arrowAbs($color: $color_text, $size:8, $width:1, $layout:right, $position:20, $direction:right);
+                    // @include arrowAbs($color: $color_text, $size:8, $width:1, $layout:right, $position:20, $direction:right);
                 }
                 button {
                     color: $color_text;
-                    @include arrowAbs($color: $color_text, $size:8, $width:1, $layout:right, $position:20, $direction:right);
+                    // @include arrowAbs($color: $color_text, $size:8, $width:1, $layout:right, $position:20, $direction:right);
                 }
             }
         }

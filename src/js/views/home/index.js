@@ -41,15 +41,19 @@ class App extends React.Component {
 
     Remove(e) {
         e.preventDefault();
+        window.Loading.Show();
         Sign.Remove(() => {
-            location.replace('/signup')
+            location.replace('/signup');
+            window.Loading.Hide();
         });
     }
 
     SignOut(e) {
         e.preventDefault();
+        window.Loading.Show();
         Sign.Out( Object.keys(this.state.user)[0], () => {
-            location.replace('/signin')
+            location.replace('/signin');
+            window.Loading.Hide();
         } );
     }
 
@@ -83,7 +87,7 @@ class App extends React.Component {
         if(user !== "other") {
             this.history.push("/rental/"+id);
         } else {
-            window.BodyMessage(deviceName+" は貸出中です");
+            window.BodyMessage.AutoPlay(deviceName+" は貸出中です");
         }
 
     }

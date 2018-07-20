@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 
 const Sign = {
 
-    Up: (data) => {
+    Up: (data,callback) => {
 
         let signinData = {},
             inputData = data;
@@ -20,9 +20,11 @@ const Sign = {
 
         localStorage.setItem(window.LSName, JSON.stringify(signinData));
 
+        if(callback) setTimeout( callback, 1000)
+
     },
 
-    In: (data) => {
+    In: (data,callback) => {
 
         let signinData = {},
             inputData = data;
@@ -46,6 +48,8 @@ const Sign = {
         // localStorage.setItem(window.LSName, JSON.stringify(signinData));
         // location.replace('/')
 
+        if(callback) setTimeout( callback, 1000)
+
     },
 
     Out: (data,callback) => {
@@ -57,7 +61,7 @@ const Sign = {
                 signinData[data] = null;
             localStorage.setItem(window.LSName, JSON.stringify(signinData));
 
-            if(callback) callback()
+            if(callback) setTimeout( callback, 1000)
         }
 
     },
@@ -69,7 +73,7 @@ const Sign = {
         if( res == true ) {
 
             localStorage.removeItem(window.LSName);
-            if(callback) callback()
+            if(callback) setTimeout( callback, 1000)
 
         }
 

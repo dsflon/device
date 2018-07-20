@@ -19,7 +19,7 @@ const Do = (history,e) => {
 
     setTimeout( () => {
         history.push("/")
-        window.BodyMessage(deviceName + " を返却しました");
+        window.BodyMessage.AutoPlay(deviceName + " を返却しました");
         window.Loading.Hide();
     }, 1000)
 

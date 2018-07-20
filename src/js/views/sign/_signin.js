@@ -38,14 +38,20 @@ class SignIn extends React.Component {
 
     Remove(e) {
         e.preventDefault();
+        window.Loading.Show();
         Sign.Remove(() => {
+            window.Loading.Hide();
             location.replace('/signup')
         });
     }
 
     SignIn(e) {
         e.preventDefault();
-        Sign.In(this.state.inputData);
+        window.Loading.Show();
+
+        Sign.In(this.state.inputData, () => {
+            window.Loading.Hide();
+        });
     }
 
     render() {

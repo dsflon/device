@@ -10,7 +10,10 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 import reducer from './reducers'
 
-import Root from './_root'
+import Root from './_root';
+
+import BodyMessage from './common/_bodyMessage';
+import CheckNetwork from './common/_checkNetwork';
 
 //scss
 import '../scss/style.scss'
@@ -39,16 +42,16 @@ const initialState = {
 let store = createStore(reducer,initialState);
 
 /*
-** Check Network
+** Window Object
 */
-const CheckNetwork = () => {
-    let tagHtml = document.getElementsByTagName('html')[0];
-    if( !navigator.onLine ) {
-        tagHtml.classList.add("offline");
-    } else {
-        tagHtml.classList.remove("offline");
-    }
-}
+window.LSName = "deviceRentalSystem";
+window.CheckNetwork = new CheckNetwork();
+window.BodyMessage = new BodyMessage(document.getElementById('app'));
+window.Loading = {
+    Show: () => { document.body.classList.add("loading") },
+    Hide: () => { document.body.classList.remove("loading") }
+};
+
 
 /*
 ** Onload
@@ -63,9 +66,6 @@ window.onload = () => {
     // window.messagesRef = window.database.ref('device');
     /* Firebase Initialize */
 
-    window.LSName = "deviceRentalSystem";
-    window.CheckNetwork = CheckNetwork;
-
     /*
     ** React
     */
@@ -77,42 +77,6 @@ window.onload = () => {
     );
 
 };
-
-
-/*
-** Body Messaege
-*/
-const BodyMessage = (message) => {
-
-    if(!message) return false;
-
-    let target = document.getElementById('app');
-    target.dataset.message = message;
-
-    setTimeout( () => {
-        target.classList.add("show_message")
-    }, 1)
-    setTimeout( () => {
-        target.classList.remove("show_message");
-        target.addEventListener("transitionend", TransitionEnd)
-    }, 2000)
-
-    function TransitionEnd() {
-        target.dataset.message = "";
-        target.removeEventListener("transitionend", TransitionEnd)
-    }
-
-}
-/*
-** Loading
-*/
-const Loading = {
-    Show: () => { document.body.classList.add("loading") },
-    Hide: () => { document.body.classList.remove("loading") }
-}
-
-window.BodyMessage = BodyMessage;
-window.Loading = Loading;
 
 
 /*
