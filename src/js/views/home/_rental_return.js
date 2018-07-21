@@ -43,7 +43,7 @@ const Return = ({deviceId,item,history}) => {
 
                 <div className="rental_main">
 
-                    <p className="a-ttl a-ttl_s f-txt_red">この端末を返しますか？</p>
+                    <p className="a-ttl a-ttl_s f-txt_red">この端末を返却しますか？</p>
 
                     <div className="rental_notice">
                         <ul className="f-font_b">
