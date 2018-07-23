@@ -9,15 +9,15 @@ class EditProfile extends React.Component {
     constructor(props) {
         super(props);
 
-        this.stuer = localStorage.getItem(window.LSUser);
-        this.stuer = JSON.parse(this.stuer);
+        this.stuser = localStorage.getItem(window.LSUser);
+        this.stuser = JSON.parse(this.stuser);
     }
 
     componentDidMount() {
 
-        if(this.stuer) {
-            let key = Object.keys(this.stuer)[0],
-                dep = this.stuer[key].dep,
+        if(this.stuser) {
+            let key = Object.keys(this.stuser)[0],
+                dep = this.stuser[key].dep,
                 email = key.replace("_", ".");
 
             this.refs.input_dep.value = dep;
@@ -34,7 +34,6 @@ class EditProfile extends React.Component {
 
         Sign.Up(this.state.inputData, () => {
             this.history.push("/");
-            window.Loading.Hide();
         });
 
     }

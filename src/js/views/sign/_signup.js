@@ -8,20 +8,24 @@ class SignUp extends React.Component {
 
     constructor(props) {
         super(props);
-        this.stuer = localStorage.getItem(window.LSUser);
-        this.stuer = JSON.parse(this.stuer);
+        this.stuser = localStorage.getItem(window.LSUser);
+        this.stuser = JSON.parse(this.stuser);
     }
 
     componentWillMount() {
         this.PageRedirect()
     }
 
+    componentDidMount() {
+        window.Loading.Hide();
+    }
+
     PageRedirect() {
 
-        if( this.stuer && Object.values(this.stuer)[0] ) {
+        if( this.stuser && Object.values(this.stuser)[0] ) {
             // 既サインイン時
             location.replace('/');
-        } else if( this.stuer && !Object.values(this.stuer)[0] ) {
+        } else if( this.stuser && !Object.values(this.stuser)[0] ) {
             // サインアウト時
             location.replace('/signin');
         }
@@ -34,8 +38,7 @@ class SignUp extends React.Component {
         window.Loading.Show();
 
         Sign.Up(this.state.inputData, () => {
-            this.history.push("/");
-            window.Loading.Hide();
+            location.replace('/');
         });
 
     }

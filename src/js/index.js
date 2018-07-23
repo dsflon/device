@@ -60,7 +60,7 @@ window.onload = () => {
     /* Firebase Initialize */
     window.database = firebase.database();
 
-    window.usersRef = window.database.ref('users');
+    window.userRef = window.database.ref('users');
     window.messagesRef = window.database.ref('device');
     /* Firebase Initialize */
 

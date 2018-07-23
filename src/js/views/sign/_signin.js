@@ -9,8 +9,8 @@ class SignIn extends React.Component {
     constructor(props) {
         super(props);
 
-        this.stuer = localStorage.getItem(window.LSUser);
-        this.stuer = JSON.parse(this.stuer);
+        this.stuser = localStorage.getItem(window.LSUser);
+        this.stuser = JSON.parse(this.stuser);
 
     }
 
@@ -20,8 +20,10 @@ class SignIn extends React.Component {
 
     componentDidMount() {
 
-        if(this.stuer) {
-            let stuer = Object.keys(this.stuer)[0];
+        window.Loading.Hide();
+
+        if(this.stuser) {
+            let stuer = Object.keys(this.stuser)[0];
             this.value = stuer.replace("_", ".");
             this.refs.input_email.value = this.value;
             this.props.InputEmail(this.refs.input_email)
@@ -30,7 +32,7 @@ class SignIn extends React.Component {
 
     PageRedirect() {
 
-        if( this.stuer && Object.values(this.stuer)[0] ) {
+        if( this.stuser && Object.values(this.stuser)[0] ) {
             location.replace('/');
         }
 
@@ -40,7 +42,6 @@ class SignIn extends React.Component {
         e.preventDefault();
         window.Loading.Show();
         Sign.Remove(() => {
-            window.Loading.Hide();
             location.replace('/signup')
         });
     }
@@ -50,7 +51,7 @@ class SignIn extends React.Component {
         window.Loading.Show();
 
         Sign.In(this.state.inputData, () => {
-            window.Loading.Hide();
+            location.replace('/')
         });
     }
 

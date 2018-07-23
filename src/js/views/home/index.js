@@ -16,8 +16,8 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.stuer = localStorage.getItem(window.LSUser);
-        this.stuer = JSON.parse(this.stuer);
+        this.stuser = localStorage.getItem(window.LSUser);
+        this.stuser = JSON.parse(this.stuser);
     }
 
     componentWillMount() {
@@ -25,11 +25,11 @@ class App extends React.Component {
         this.history = this.props.history;
         window.actions = this.props.actions;
 
-        if(this.stuer && Object.values(this.stuer)[0] ) {
+        if(this.stuser && Object.values(this.stuser)[0] ) {
             // 既サインイン時
-            window.actions.User( this.stuer );
+            window.actions.User( this.stuser );
             Fetch();
-        } else if( this.stuer && !Object.values(this.stuer)[0] ) {
+        } else if( this.stuser && !Object.values(this.stuser)[0] ) {
             // サインアウト時
             location.replace('/signin');
         } else {
@@ -39,12 +39,15 @@ class App extends React.Component {
 
     }
 
+    componentDidMount() {
+        window.Loading.Hide();
+    }
+
     Remove(e) {
         e.preventDefault();
         window.Loading.Show();
         Sign.Remove(() => {
             location.replace('/signup');
-            window.Loading.Hide();
         });
     }
 
@@ -53,7 +56,6 @@ class App extends React.Component {
         window.Loading.Show();
         Sign.Out( Object.keys(this.state.user)[0], () => {
             location.replace('/signin');
-            window.Loading.Hide();
         } );
     }
 

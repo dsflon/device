@@ -16,39 +16,28 @@ const Sign = {
             "name": name
         }
 
-        console.log(signinData);
-
-        localStorage.setItem(window.LSUser, JSON.stringify(signinData));
-
-        if(callback) setTimeout( callback, 1000)
+        window.userRef.set(signinData).then( () => {
+            localStorage.setItem(window.LSUser, JSON.stringify(signinData));
+            if(callback) callback()
+        });
 
     },
 
     In: (data,callback) => {
 
         let signinData = {},
-            inputData = data;
+            key = data.email.replace( '.', '_' );
 
-        let key = inputData.email.replace( '.', '_' ),
-            name = inputData.email.replace( '.', ' ' );
+        window.userRef.child(key).once('value').then( (snapshot) => {
 
-        console.log("SignIn: ",key);
+            let data = snapshot.val();
 
-        // let signinData = {},
-        //     inputData = data;
-        //
-        // let key = inputData.email.replace( '.', '_' ),
-        //     name = inputData.email.replace( '.', ' ' );
-        //
-        // signinData[key] = {
-        //     "dep": inputData.dep,
-        //     "name": name
-        // }
-        //
-        // localStorage.setItem(window.LSUser, JSON.stringify(signinData));
-        // location.replace('/')
+            signinData[key] = data;
 
-        if(callback) setTimeout( callback, 1000)
+            localStorage.setItem(window.LSUser, JSON.stringify(signinData));
+            if(callback) callback()
+
+        });
 
     },
 
@@ -61,7 +50,7 @@ const Sign = {
                 signinData[data] = null;
             localStorage.setItem(window.LSUser, JSON.stringify(signinData));
 
-            if(callback) setTimeout(callback, 1000)
+            if(callback) callback();
         }
 
     },
@@ -70,11 +59,18 @@ const Sign = {
 
         let res = confirm("アカウントを削除しますか？");
 
+        let stuser = localStorage.getItem(window.LSUser);
+            stuser = JSON.parse(stuser);
+
+        if(stuser) stuser = Object.keys(stuser)[0];
+
         if( res == true ) {
 
-            localStorage.removeItem(window.LSUser);
-            localStorage.removeItem(window.LSData);
-            if(callback) setTimeout( callback, 1000)
+            window.userRef.child(stuser).remove().then( () => {
+                localStorage.removeItem(window.LSUser);
+                localStorage.removeItem(window.LSData);
+                if(callback) callback();
+            });;
 
         }
 
