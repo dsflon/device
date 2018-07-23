@@ -42,7 +42,8 @@ let store = createStore(reducer,initialState);
 /*
 ** Window Object
 */
-window.LSName = "deviceRentalSystem";
+window.LSUser = "deviceRentalSystem";
+window.LSData = "deviceRentalSystemData";
 window.CheckNetwork = new CheckNetwork();
 window.BodyMessage = new BodyMessage(document.getElementById('app'));
 window.Loading = {

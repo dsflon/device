@@ -12,6 +12,12 @@ const Fetch = () => {
 
     let deviceData = {}, timer;
 
+    // Fetch Localstorage
+    let storage = localStorage.getItem(window.LSData);
+        storage = JSON.parse(storage);
+
+    if( storage ) window.actions.List(storage);
+
     let SetData = (data) => {
 
         let key = data.key,
@@ -20,7 +26,11 @@ const Fetch = () => {
 
             deviceData[key] = val;
 
-        window.actions.List(deviceData);
+        clearTimeout(timer);
+        timer = setTimeout( () => {
+            window.actions.List(deviceData);
+            localStorage.setItem(window.LSData, JSON.stringify(deviceData));
+        },1)
 
     };
 
@@ -31,6 +41,7 @@ const Fetch = () => {
     });
 
 }
+
 //
 // const Fetch = (actions,myAccount) => {
 //

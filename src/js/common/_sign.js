@@ -18,7 +18,7 @@ const Sign = {
 
         console.log(signinData);
 
-        localStorage.setItem(window.LSName, JSON.stringify(signinData));
+        localStorage.setItem(window.LSUser, JSON.stringify(signinData));
 
         if(callback) setTimeout( callback, 1000)
 
@@ -45,7 +45,7 @@ const Sign = {
         //     "name": name
         // }
         //
-        // localStorage.setItem(window.LSName, JSON.stringify(signinData));
+        // localStorage.setItem(window.LSUser, JSON.stringify(signinData));
         // location.replace('/')
 
         if(callback) setTimeout( callback, 1000)
@@ -59,9 +59,9 @@ const Sign = {
 
             let signinData = {};
                 signinData[data] = null;
-            localStorage.setItem(window.LSName, JSON.stringify(signinData));
+            localStorage.setItem(window.LSUser, JSON.stringify(signinData));
 
-            if(callback) setTimeout( callback, 1000)
+            if(callback) setTimeout(callback, 1000)
         }
 
     },
@@ -72,7 +72,8 @@ const Sign = {
 
         if( res == true ) {
 
-            localStorage.removeItem(window.LSName);
+            localStorage.removeItem(window.LSUser);
+            localStorage.removeItem(window.LSData);
             if(callback) setTimeout( callback, 1000)
 
         }

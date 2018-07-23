@@ -16,7 +16,7 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.stuer = localStorage.getItem(window.LSName);
+        this.stuer = localStorage.getItem(window.LSUser);
         this.stuer = JSON.parse(this.stuer);
     }
 
