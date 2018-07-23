@@ -7,7 +7,7 @@ const Close = (history,e) => {
 
 }
 
-const Do = (history,e) => {
+const Do = (history,user,e) => {
 
     e.preventDefault();
 
@@ -17,22 +17,24 @@ const Do = (history,e) => {
         keyNum = deviceId.split("_")[1];
         window.Loading.Show();
 
-    let devideUserRef = window.devideRef.child(keyCat+"/"+keyNum+"/user");
+    let userRef = window.userRef.child(Object.keys(user)[0]+"/device/" + deviceId),
+        devideRef = window.devideRef.child(keyCat+"/"+keyNum+"/user");
 
     history.push("/")
     setTimeout(() => {
-        devideUserRef.remove().then( () => {
+        devideRef.remove().then( () => {
             window.BodyMessage.AutoPlay(deviceName + " を返却しました");
+            userRef.remove();
             window.Loading.Hide();
         }).catch( (e) => {
             console.error(e);
             window.BodyMessage.AutoPlay("エラーが発生しました");
         });
-    },500);
+    },300);
 
 }
 
-const Return = ({deviceId,item,history}) => {
+const Return = ({deviceId,item,history,user}) => {
 
     let deviceNum = deviceId.split("_")[1];
 
@@ -69,7 +71,7 @@ const Return = ({deviceId,item,history}) => {
                             id={deviceId}
                             className="a-btn a-btn_red"
                             data-devicename={item.name}
-                            onClick={Do.bind(this,history)}>
+                            onClick={Do.bind(this,history,user)}>
                             はい
                         </button>
                     </div>

@@ -21,19 +21,24 @@ const Do = (history,user,e) => {
         userData["uid"] = Object.keys(user)[0];
         userData["timestamp"] = new Date().getTime();
 
-    let devideUserRef = window.devideRef.child(keyCat+"/"+keyNum+"/user");
+    let userRef = window.userRef.child(Object.keys(user)[0]+"/device"),
+        devideRef = window.devideRef.child(keyCat+"/"+keyNum+"/user");
+
+    let userRefObj = {};
+        userRefObj[deviceId] = true;
 
     history.push("/");
 
     setTimeout(() => {
-        devideUserRef.set(userData).then( () => {
+        devideRef.set(userData).then( () => {
             window.BodyMessage.AutoPlay(deviceName + " を借りました");
+            userRef.update(userRefObj);
             window.Loading.Hide();
         }).catch( (e) => {
             console.error(e);
             window.BodyMessage.AutoPlay("エラーが発生しました");
         });
-    },500);
+    },300);
 
 }
 

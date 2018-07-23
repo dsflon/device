@@ -32,6 +32,8 @@ const Sign = {
 
             let data = snapshot.val();
 
+            delete data.device;
+
             signinData[key] = data;
 
             localStorage.setItem(window.LSUser, JSON.stringify(signinData));
@@ -57,22 +59,33 @@ const Sign = {
 
     Remove: (callback) => {
 
-        let res = confirm("アカウントを削除しますか？");
-
         let stuser = localStorage.getItem(window.LSUser);
             stuser = JSON.parse(stuser);
 
-        if( res == true && stuser ) {
+        stuser = Object.keys(stuser)[0];
 
-            stuser = Object.keys(stuser)[0];
-
-            window.userRef.child(stuser).remove().then( () => {
-                localStorage.removeItem(window.LSUser);
-                localStorage.removeItem(window.LSData);
-                if(callback) callback();
+        Promise.resolve()
+        .then(() => {
+            return new Promise((resolve, reject) => {
+                window.userRef.child(stuser).once('value').then( (snapshot) => {
+                    let data = snapshot.val();
+                    !data.device ? resolve() : reject();
+                });
             });
-
-        }
+        })
+        .then(() => {
+            let res = confirm("アカウントを削除しますか？");
+            if( res == true && stuser ) {
+                window.userRef.child(stuser).remove().then( () => {
+                    localStorage.removeItem(window.LSUser);
+                    localStorage.removeItem(window.LSData);
+                    if(callback) callback();
+                });
+            }
+        }).catch(() => {
+            window.BodyMessage.AutoPlay("端末をすべて返却してください");
+            window.Loading.Hide();
+        });
 
     }
 

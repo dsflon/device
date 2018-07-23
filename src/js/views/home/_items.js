@@ -16,15 +16,9 @@ class Items extends React.Component {
 
     }
 
-    componentWillMount() {
-    }
-
-    componentDidMount() {
-    }
-
     GetList(data,categoryId) {
 
-        let listDom = [];
+        let listDom = [], noticeList = null;
 
         for (var deviceId in data) {
 
@@ -33,6 +27,14 @@ class Items extends React.Component {
                 dataUser = "no";
 
             if(user) dataUser = user.uid === this.uid ? "own" : "other";
+
+            let notice = user && this.today - user.timestamp > this.limit,
+                noticeDom = null;
+
+            if(notice) {
+                noticeDom = <i className={"notice a-icon a-icon_notice" + (user.uid === this.uid ? " a-icon_notice_w" : "")}></i>;
+                noticeList = notice;
+            }
 
             let userDom = user ? (
                 <div className="m-device_user">
@@ -56,10 +58,6 @@ class Items extends React.Component {
                 </div>
             ) : null;
 
-            let notice = user && this.today - user.timestamp > this.limit ? (
-                <i className={"notice a-icon a-icon_notice" + (user.uid === this.uid ? " a-icon_notice_w" : "")}></i>
-            ) : null;
-
             if( deviceId !== "sort" ) {
                 listDom.push(
                     <li sort={item.sort} key={deviceId} className="list_item">
@@ -79,7 +77,7 @@ class Items extends React.Component {
                                 {userDom}
                             </div>
 
-                            {notice}
+                            {noticeDom}
 
                         </button>
                     </li>
@@ -94,22 +92,29 @@ class Items extends React.Component {
             }
         );
 
-        return listDom;
+        return {
+            noticeList: noticeList,
+            listDom: listDom
+        };
+
     }
 
     GetCategory(data) {
 
-        let categoryDom = [];
+        let categoryDom = [], noticeList;
 
         for (var categoryId in data) {
             let items = data[categoryId],
                 sort = items.sort;
 
+            let getList = this.GetList(items,categoryId);
+            noticeList = getList.noticeList;
+
             categoryDom.push(
-                <section sort={sort} key={categoryId} className={"list"}>
+                <section sort={sort} key={categoryId} className="list">
                     <h2 className="a-ttl a-ttl_m a-ttl_mb list_cat">{categoryId}</h2>
                     <ul className="list_items">
-                        {this.GetList(items,categoryId)}
+                        {getList.listDom}
                     </ul>
                 </section>
             );
@@ -122,24 +127,33 @@ class Items extends React.Component {
             }
         );
 
-        return categoryDom;
+        return {
+            noticeList: noticeList,
+            categoryDom: categoryDom
+        };
 
     }
 
     render() {
-        
+
         this.user = this.props.state.user;
         this.list = this.props.state.list;
         this.uid = Object.keys(this.user)[0];
 
-        let items = this.GetCategory(this.list);
+        let getCategory = this.GetCategory(this.list),
+            items = getCategory.categoryDom,
+            noticeList = getCategory.noticeList;
+
+        let listsNotice = noticeList ? (
+            <p className="lists_notice">
+                <i className="a-icon a-icon_notice"></i>
+                <span className="a-icon_txt">返却されていない端末があります</span>
+            </p>
+        ) : null;
 
         return (
-            <div className="lists">
-                <p className="lists_notice">
-                    <i className="a-icon a-icon_notice"></i>
-                    <span className="a-icon_txt">返却されていない端末があります</span>
-                </p>
+            <div className="lists" ref="lists">
+                {listsNotice}
                 {items}
             </div>
         );

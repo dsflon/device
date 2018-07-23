@@ -24,7 +24,7 @@ const ShowItem = ({props}) => {
         return <Borrow deviceId={deviceId} item={item} history={history} user={state.user} />
 
         case Object.keys(state.user)[0]:
-        return <Return deviceId={deviceId} item={item} history={history} />;
+        return <Return deviceId={deviceId} item={item} history={history} user={state.user} />;
 
     }
 
