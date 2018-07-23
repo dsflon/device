@@ -16,7 +16,7 @@ const Sign = {
             "name": name
         }
 
-        window.userRef.set(signinData).then( () => {
+        window.userRef.update(signinData).then( () => {
             localStorage.setItem(window.LSUser, JSON.stringify(signinData));
             if(callback) callback()
         });
@@ -62,23 +62,21 @@ const Sign = {
         let stuser = localStorage.getItem(window.LSUser);
             stuser = JSON.parse(stuser);
 
-        if(stuser) stuser = Object.keys(stuser)[0];
+        if( res == true && stuser ) {
 
-        if( res == true ) {
+            stuser = Object.keys(stuser)[0];
 
             window.userRef.child(stuser).remove().then( () => {
                 localStorage.removeItem(window.LSUser);
                 localStorage.removeItem(window.LSData);
                 if(callback) callback();
-            });;
+            });
 
         }
 
     }
 
 }
-
-
 
 function toUpperFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();

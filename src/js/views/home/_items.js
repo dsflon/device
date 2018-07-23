@@ -17,9 +17,6 @@ class Items extends React.Component {
     }
 
     componentWillMount() {
-        this.user = this.props.state.user;
-        this.list = this.props.state.list;
-        this.uid = Object.keys(this.user)[0];
     }
 
     componentDidMount() {
@@ -130,6 +127,10 @@ class Items extends React.Component {
     }
 
     render() {
+        
+        this.user = this.props.state.user;
+        this.list = this.props.state.list;
+        this.uid = Object.keys(this.user)[0];
 
         let items = this.GetCategory(this.list);
 

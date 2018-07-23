@@ -17,11 +17,18 @@ const Do = (history,e) => {
         keyNum = deviceId.split("_")[1];
         window.Loading.Show();
 
-    setTimeout( () => {
-        history.push("/")
-        window.BodyMessage.AutoPlay(deviceName + " を返却しました");
-        window.Loading.Hide();
-    }, 1000)
+    let devideUserRef = window.devideRef.child(keyCat+"/"+keyNum+"/user");
+
+    history.push("/")
+    setTimeout(() => {
+        devideUserRef.remove().then( () => {
+            window.BodyMessage.AutoPlay(deviceName + " を返却しました");
+            window.Loading.Hide();
+        }).catch( (e) => {
+            console.error(e);
+            window.BodyMessage.AutoPlay("エラーが発生しました");
+        });
+    },500);
 
 }
 

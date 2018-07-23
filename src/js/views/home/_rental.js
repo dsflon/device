@@ -1,8 +1,10 @@
 import React from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 import Borrow from './_rental_borrow';
 import Return from './_rental_return';
 
-const ShowRental = (props) => {
+const ShowItem = ({props}) => {
 
     let {
         state,
@@ -27,5 +29,29 @@ const ShowRental = (props) => {
     }
 
 }
+
+const ShowRental = (props) => {
+
+    let {
+        history: { location: { key } }
+    } = props;
+
+    return (
+
+        <TransitionGroup>
+            <CSSTransition
+                key={key}
+                timeout={300}
+                classNames="rental">
+
+                <ShowItem props={props} />
+
+            </CSSTransition>
+        </TransitionGroup>
+
+    )
+
+}
+
 
 export default ShowRental;

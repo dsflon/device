@@ -14,7 +14,6 @@ class EditProfile extends React.Component {
     }
 
     componentDidMount() {
-
         if(this.stuser) {
             let key = Object.keys(this.stuser)[0],
                 dep = this.stuser[key].dep,

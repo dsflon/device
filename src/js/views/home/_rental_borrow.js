@@ -17,11 +17,23 @@ const Do = (history,user,e) => {
         keyNum = deviceId.split("_")[1];
         window.Loading.Show();
 
-    setTimeout( () => {
-        history.push("/")
-        window.BodyMessage.AutoPlay(deviceName + " を借りました");
-        window.Loading.Hide();
-    }, 1000)
+    let userData = Object.values(user)[0];
+        userData["uid"] = Object.keys(user)[0];
+        userData["timestamp"] = new Date().getTime();
+
+    let devideUserRef = window.devideRef.child(keyCat+"/"+keyNum+"/user");
+
+    history.push("/");
+
+    setTimeout(() => {
+        devideUserRef.set(userData).then( () => {
+            window.BodyMessage.AutoPlay(deviceName + " を借りました");
+            window.Loading.Hide();
+        }).catch( (e) => {
+            console.error(e);
+            window.BodyMessage.AutoPlay("エラーが発生しました");
+        });
+    },500);
 
 }
 

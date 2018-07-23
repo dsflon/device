@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, Route } from "react-router-dom";
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -104,9 +103,7 @@ class App extends React.Component {
 
         let {
             match,
-            match: { params:{page,deviceId},url},
             history,
-            history: { location:{key} }
         } = this.props;
 
         if( !this.Success() ) return false;
@@ -133,14 +130,10 @@ class App extends React.Component {
                     <Items state={this.state} rental={this.ClickRental.bind(this)} />
                 </div>
 
-                <TransitionGroup>
-                    <CSSTransition
-                        key={key}
-                        timeout={300}
-                        classNames="rental">
-                        <ShowRental state={this.state} match={match} history={history} />
-                    </CSSTransition>
-                </TransitionGroup>
+                <ShowRental
+                    state={this.state}
+                    match={match}
+                    history={history} />
 
             </div>
         );
