@@ -1,7 +1,5 @@
 import firebase from 'firebase/app';
-import 'firebase/auth';
 import 'firebase/database';
-import 'firebase/storage';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -21,15 +19,15 @@ import '../scss/style.scss'
 /*
 ** Firebase Initialize
 */
-// const config = {
-    // apiKey: "AIzaSyAoCKwZTDg2cnk4EL__2F551peIH409Mug",
-    // authDomain: "device-rental.firebaseapp.com",
-    // databaseURL: "https://device-rental.firebaseio.com",
-    // projectId: "device-rental",
-    // storageBucket: "",
-    // messagingSenderId: "911109915400"
-// };
-// firebase.initializeApp(config);
+const config = {
+    apiKey: "AIzaSyAoCKwZTDg2cnk4EL__2F551peIH409Mug",
+    authDomain: "device-rental.firebaseapp.com",
+    databaseURL: "https://device-rental.firebaseio.com",
+    projectId: "device-rental",
+    storageBucket: "",
+    messagingSenderId: "911109915400"
+};
+firebase.initializeApp(config);
 
 
 /*
@@ -59,11 +57,10 @@ window.Loading = {
 window.onload = () => {
 
     /* Firebase Initialize */
-    // window.auth = firebase.auth();
-    // window.database = firebase.database();
+    window.database = firebase.database();
 
-    // window.usersRef = window.database.ref('users');
-    // window.messagesRef = window.database.ref('device');
+    window.usersRef = window.database.ref('users');
+    window.messagesRef = window.database.ref('device');
     /* Firebase Initialize */
 
     /*

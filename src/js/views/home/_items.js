@@ -30,11 +30,12 @@ class Items extends React.Component {
         let listDom = [];
 
         for (var deviceId in data) {
+
             let item = data[deviceId],
                 user = item.user,
                 dataUser = "no";
 
-            if(user) dataUser = user.uid === this.uid ? "own" : "other"
+            if(user) dataUser = user.uid === this.uid ? "own" : "other";
 
             let userDom = user ? (
                 <div className="m-device_user">
@@ -62,29 +63,31 @@ class Items extends React.Component {
                 <i className={"notice a-icon a-icon_notice" + (user.uid === this.uid ? " a-icon_notice_w" : "")}></i>
             ) : null;
 
-            listDom.push(
-                <li sort={item.sort} key={deviceId} className="list_item">
-                    <button
-                        id={categoryId+"_"+deviceId}
-                        className="list_item_btn m-device"
-                        data-user={dataUser}
-                        data-devicenum={deviceId}
-                        data-devicename={item.name}
-                        data-sim={item.sim}
-                        onClick={ this.props.rental.bind(this) }>
+            if( deviceId !== "sort" ) {
+                listDom.push(
+                    <li sort={item.sort} key={deviceId} className="list_item">
+                        <button
+                            id={categoryId+"_"+deviceId}
+                            className="list_item_btn m-device"
+                            data-user={dataUser}
+                            data-devicenum={deviceId}
+                            data-devicename={item.name}
+                            data-sim={item.sim}
+                            onClick={ this.props.rental.bind(this) }>
 
-                        <figure className="m-device_image"><img src={item.image} /></figure>
-                        <div className="m-device_info">
-                            <h3 className="a-ttl m-device_ttl"><span>{item.name}</span></h3>
-                            <p className="m-device_os">{item.os}</p>
-                            {userDom}
-                        </div>
+                            <figure className="m-device_image"><img src={item.image} /></figure>
+                            <div className="m-device_info">
+                                <h3 className="a-ttl m-device_ttl"><span>{item.name}</span></h3>
+                                <p className="m-device_os">{item.os}</p>
+                                {userDom}
+                            </div>
 
-                        {notice}
+                            {notice}
 
-                    </button>
-                </li>
-            );
+                        </button>
+                    </li>
+                );
+            }
         }
 
         //sortNum順に並べる
@@ -102,10 +105,11 @@ class Items extends React.Component {
         let categoryDom = [];
 
         for (var categoryId in data) {
-            let items = data[categoryId];
+            let items = data[categoryId],
+                sort = items.sort;
 
             categoryDom.push(
-                <section key={categoryId} className={"list"}>
+                <section sort={sort} key={categoryId} className={"list"}>
                     <h2 className="a-ttl a-ttl_m a-ttl_mb list_cat">{categoryId}</h2>
                     <ul className="list_items">
                         {this.GetList(items,categoryId)}
@@ -113,6 +117,13 @@ class Items extends React.Component {
                 </section>
             );
         }
+
+        //sortNum順に並べる
+        categoryDom.sort(
+            function(a,b){
+                return (a.props.sort > b.props.sort ? 1 : -1);
+            }
+        );
 
         return categoryDom;
 

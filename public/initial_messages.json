@@ -10,12 +10,13 @@
     "device": {
 
         "iPhone": {
+            "sort": 0,
             "3": {
                 "name": "iPhone 6s",
                 "image": "/images/iphone.png",
                 "os": "iOS 11.1",
                 "sim": false,
-                "sort": 3,
+                "sort": 2,
                 "user": {
                     "uid": "taro_sato",
                     "dep": "EM1",
@@ -29,7 +30,7 @@
                 "image": "/images/iphone.png",
                 "os": "iOS 11.1",
                 "sim": true,
-                "sort": 1,
+                "sort": 0,
                 "user": {
                     "uid": "daiki_saito",
                     "dep": "TEC",
@@ -43,19 +44,20 @@
                 "image": "/images/iphone.png",
                 "os": "iOS 11.1",
                 "sim": true,
-                "sort": 2,
+                "sort": 1,
                 "user": null,
                 "log": null
             }
         },
 
         "android": {
+            "sort": 1,
             "10": {
                 "name": "HUAWEI P10 lite",
                 "image": "/images/HUAWEI_P10_lite.png",
                 "os": "android 7.0",
                 "sim": false,
-                "sort": 1,
+                "sort": 0,
                 "user": null,
                 "log": null
             },
@@ -64,7 +66,7 @@
                 "image": "/images/HUAWEI_P10_lite.png",
                 "os": "android 6.0",
                 "sim": false,
-                "sort": 2,
+                "sort": 1,
                 "user": {
                     "uid": "daiki_saito",
                     "dep": "TEC",

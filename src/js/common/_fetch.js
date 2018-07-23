@@ -1,12 +1,33 @@
 const Fetch = () => {
 
     // Fetchはローカル用
-    fetch('/initial_messages.json')
-    .then( (response) => {
-        return response.json();
-    })
-    .then( (json) => {
-        window.actions.List(json.device);
+    // fetch('/initial_messages.json')
+    // .then( (response) => {
+    //     return response.json();
+    // })
+    // .then( (json) => {
+    //     window.actions.List(json.device);
+    //     console.log(json.device);
+    // });
+
+    let deviceData = {}, timer;
+
+    let SetData = (data) => {
+
+        let key = data.key,
+            val = data.val(),
+            sort = val.sort;
+
+            deviceData[key] = val;
+
+        window.actions.List(deviceData);
+
+    };
+
+    window.messagesRef.off();
+    window.messagesRef.on('child_added', SetData);
+    window.messagesRef.on('child_changed', SetData);
+    window.messagesRef.on('child_removed', (data) => {
     });
 
 }
