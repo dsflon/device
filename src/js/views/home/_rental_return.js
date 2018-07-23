@@ -33,10 +33,10 @@ const Do = (history,user,e) => {
             window.Loading.Hide();
         });
     }).catch((e) => {
-        history.push("/");
-        userRef.remove();
-        window.Loading.Hide();
-        window.BodyMessage.AutoPlay("既に返却済みです");
+        // history.push("/");
+        // userRef.remove();
+        // window.Loading.Hide();
+        // window.BodyMessage.AutoPlay("既に返却済みです");
     });
 
 }

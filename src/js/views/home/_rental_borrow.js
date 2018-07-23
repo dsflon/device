@@ -40,75 +40,91 @@ const Do = (history,user,e) => {
             window.Loading.Hide();
         });
     }).catch((e) => {
-        history.push("/");
-        window.Loading.Hide();
-        window.BodyMessage.AutoPlay(deviceName + " は貸出中です");
+        // history.push("/");
+        // window.Loading.Hide();
+        // window.BodyMessage.AutoPlay(deviceName + " は貸出中です");
     });
 
 }
 
-const Borrow = (props) => {
+class Borrow extends React.Component {
 
-    let {
-        deviceId,
-        item,
-        history,
-        user,
-        close,
-        whose
-    } = props;
-
-    if( whose === "other" ) {
-        window.BodyMessage.AutoPlay("この端末は貸し出されました");
+    constructor(props) {
+        super(props);
     }
 
-    let deviceNum = deviceId.split("_")[1];
+    componentWillMount() {
+        this.first = true;
+    }
 
-    return (
-        <section className="rental">
-            <div className="rental_inner borrow">
+    render() {
 
-                <div className="rental_device m-device" data-sim={item.sim} data-devicenum={deviceNum}>
-                    <figure className="m-device_image"><img src={item.image} /></figure>
-                    <div className="m-device_info">
-                        <p className="a-ttl m-device_ttl"><span>{item.name}</span></p>
-                        <p className="m-device_os">{item.os}</p>
+        let {
+            deviceId,
+            item,
+            history,
+            user,
+            close,
+            whose
+        } = this.props;
+
+        if( whose === "other" && this.first ) {
+            window.BodyMessage.AutoPlay("この端末は貸し出されました");
+            this.first = false;
+        }
+
+        return (
+            <section className="rental">
+                <div className="rental_inner borrow">
+
+                    <div
+                        className="rental_device m-device"
+                        data-sim={item.sim}
+                        data-devicenum={deviceId.split("_")[1]}>
+
+                        <figure className="m-device_image"><img src={item.image} /></figure>
+                        <div className="m-device_info">
+                            <p className="a-ttl m-device_ttl"><span>{item.name}</span></p>
+                            <p className="m-device_os">{item.os}</p>
+                        </div>
+
                     </div>
+
+                    <div className="rental_main">
+
+                        <h1 className="a-ttl a-ttl_s">この端末を借りますか？</h1>
+
+                        <div className="rental_notice">
+                            <ul>
+                                <li>・レンタル期間は原則<span className="f-font_b">１日</span>です</li>
+                                <li>・<span className="f-font_b">OSアップデートは禁止</span>です</li>
+                                <li>・画面ロック解除パス「<span className="f-font_b">123456</span>」</li>
+                            </ul>
+                        </div>
+
+                        <div className="rental_btns a-btn_col">
+                            <button
+                                className="a-btn"
+                                onClick={close.bind(this,history)}>
+                                いいえ
+                            </button>
+                            <button
+                                id={deviceId}
+                                disabled={ whose === "other" ? true : false }
+                                className="a-btn a-btn_black"
+                                data-devicename={item.name}
+                                onClick={Do.bind(this,history,user)}>
+                                はい
+                            </button>
+                        </div>
+
+                    </div>
+
                 </div>
+            </section>
+        )
 
-                <div className="rental_main">
-
-                    <h1 className="a-ttl a-ttl_s">この端末を借りますか？</h1>
-
-                    <div className="rental_notice">
-                        <ul>
-                            <li>・レンタル期間は原則<span className="f-font_b">１日</span>です</li>
-                            <li>・<span className="f-font_b">OSアップデートは禁止</span>です</li>
-                            <li>・画面ロック解除パス「<span className="f-font_b">123456</span>」</li>
-                        </ul>
-                    </div>
-
-                    <div className="rental_btns a-btn_col">
-                        <button
-                            className="a-btn"
-                            onClick={close.bind(this,history)}>
-                            いいえ
-                        </button>
-                        <button
-                            id={deviceId}
-                            disabled={ whose === "other" ? true : false }
-                            className="a-btn a-btn_black"
-                            data-devicename={item.name}
-                            onClick={Do.bind(this,history,user)}>
-                            はい
-                        </button>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-    )
+    }
 
 }
 
