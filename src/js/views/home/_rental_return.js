@@ -1,12 +1,5 @@
 import React from 'react';
 
-const Close = (history,e) => {
-
-    e.preventDefault();
-    history.push("/")
-
-}
-
 const Do = (history,user,e) => {
 
     e.preventDefault();
@@ -20,21 +13,44 @@ const Do = (history,user,e) => {
     let userRef = window.userRef.child(Object.keys(user)[0]+"/device/" + deviceId),
         devideRef = window.devideRef.child(keyCat+"/"+keyNum+"/user");
 
-    history.push("/")
-    setTimeout(() => {
+    Promise.resolve()
+    .then(() => {
+        return new Promise((resolve, reject) => {
+            devideRef.once('value').then( (snapshot) => {
+                let data = snapshot.val();
+                data ? resolve() : reject();
+            });
+        });
+    }).then(() => {
+        return new Promise((resolve, reject) => {
+            history.push("/");
+            setTimeout( resolve, 300);
+        });
+    }).then(() => {
         devideRef.remove().then( () => {
             window.BodyMessage.AutoPlay(deviceName + " を返却しました");
             userRef.remove();
             window.Loading.Hide();
-        }).catch( (e) => {
-            console.error(e);
-            window.BodyMessage.AutoPlay("エラーが発生しました");
         });
-    },300);
+    }).catch((e) => {
+        history.push("/");
+        userRef.remove();
+        window.Loading.Hide();
+        window.BodyMessage.AutoPlay("既に返却済みです");
+    });
 
 }
 
-const Return = ({deviceId,item,history,user}) => {
+const Return = (props) => {
+
+    let {
+        deviceId,
+        item,
+        history,
+        user,
+        close,
+        whose
+    } = props;
 
     let deviceNum = deviceId.split("_")[1];
 
@@ -64,7 +80,7 @@ const Return = ({deviceId,item,history,user}) => {
                     <div className="rental_btns a-btn_col">
                         <button
                             className="a-btn"
-                            onClick={Close.bind(this,history)}>
+                            onClick={close.bind(this,history)}>
                             いいえ
                         </button>
                         <button

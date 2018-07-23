@@ -4,6 +4,14 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Borrow from './_rental_borrow';
 import Return from './_rental_return';
 
+
+const Close = (history,e) => {
+
+    if(e) e.preventDefault();
+    history.push("/")
+
+}
+
 const ShowItem = ({props}) => {
 
     let {
@@ -16,25 +24,31 @@ const ShowItem = ({props}) => {
 
     let keys = deviceId.split("_"),
         item = state.list[keys[0]][keys[1]],
-        rentalName = item.user ? item.user.uid : null;
+        rentalName = item.user ? item.user.uid : null,
+        whose = "no";
 
     let myName = Object.keys(state.user)[0];
-
-    if( rentalName && myName !== rentalName ) { //先に借りられたときの処理
-        window.BodyMessage.AutoPlay(item.name + " は貸出中です", null, () => {
-            location.replace('/');
-        });
-
-        return <div />;
-    }
+    if(rentalName) whose = myName === rentalName ? "own" : "other";
 
     switch (rentalName) {
 
         case myName:
-        return <Return deviceId={deviceId} item={item} history={history} user={state.user} />;
+        return <Return
+            deviceId={deviceId}
+            item={item}
+            whose={whose}
+            history={history}
+            close={Close.bind(this)}
+            user={state.user} />;
 
         default:
-        return <Borrow deviceId={deviceId} item={item} history={history} user={state.user} />
+        return <Borrow
+            deviceId={deviceId}
+            item={item}
+            whose={whose}
+            history={history}
+            close={Close.bind(this)}
+            user={state.user} />
 
     }
 

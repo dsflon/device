@@ -1,12 +1,5 @@
 import React from 'react';
 
-const Close = (history,e) => {
-
-    e.preventDefault();
-    history.push("/")
-
-}
-
 const Do = (history,user,e) => {
 
     e.preventDefault();
@@ -27,22 +20,47 @@ const Do = (history,user,e) => {
     let userRefObj = {};
         userRefObj[deviceId] = true;
 
-    history.push("/");
-
-    setTimeout(() => {
-        devideRef.set(userData).then( () => {
-            window.BodyMessage.AutoPlay(deviceName + " を借りました");
-            userRef.update(userRefObj);
-            window.Loading.Hide();
-        }).catch( (e) => {
-            console.error(e);
-            window.BodyMessage.AutoPlay("エラーが発生しました");
+    Promise.resolve()
+    .then(() => {
+        return new Promise((resolve, reject) => {
+            devideRef.once('value').then( (snapshot) => {
+                let data = snapshot.val();
+                !data ? resolve() : reject();
+            });
         });
-    },300);
+    }).then(() => {
+        return new Promise((resolve, reject) => {
+            history.push("/");
+            setTimeout( resolve, 300);
+        });
+    }).then(() => {
+        devideRef.set(userData).then( () => {
+            userRef.update(userRefObj);
+            window.BodyMessage.AutoPlay(deviceName + " を借りました");
+            window.Loading.Hide();
+        });
+    }).catch((e) => {
+        history.push("/");
+        window.Loading.Hide();
+        window.BodyMessage.AutoPlay(deviceName + " は貸出中です");
+    });
 
 }
 
-const Borrow = ({deviceId,item,history,user}) => {
+const Borrow = (props) => {
+
+    let {
+        deviceId,
+        item,
+        history,
+        user,
+        close,
+        whose
+    } = props;
+
+    if( whose === "other" ) {
+        window.BodyMessage.AutoPlay("この端末は貸し出されました");
+    }
 
     let deviceNum = deviceId.split("_")[1];
 
@@ -73,11 +91,12 @@ const Borrow = ({deviceId,item,history,user}) => {
                     <div className="rental_btns a-btn_col">
                         <button
                             className="a-btn"
-                            onClick={Close.bind(this,history)}>
+                            onClick={close.bind(this,history)}>
                             いいえ
                         </button>
                         <button
                             id={deviceId}
+                            disabled={ whose === "other" ? true : false }
                             className="a-btn a-btn_black"
                             data-devicename={item.name}
                             onClick={Do.bind(this,history,user)}>
