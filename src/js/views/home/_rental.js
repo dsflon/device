@@ -14,19 +14,30 @@ const ShowItem = ({props}) => {
 
     if(!deviceId) return <div />;
 
-    let keys = deviceId.split("_");
-    let item = state.list[keys[0]][keys[1]];
-    let rental = item.user ? item.user.uid : "borrow";
+    let keys = deviceId.split("_"),
+        item = state.list[keys[0]][keys[1]],
+        rentalName = item.user ? item.user.uid : null;
 
-    switch (rental) {
+    let myName = Object.keys(state.user)[0];
 
-        case 'borrow':
-        return <Borrow deviceId={deviceId} item={item} history={history} user={state.user} />
+    if( rentalName && myName !== rentalName ) { //先に借りられたときの処理
+        window.BodyMessage.AutoPlay(item.name + " は貸出中です", null, () => {
+            location.replace('/');
+        });
 
-        case Object.keys(state.user)[0]:
+        return <div />;
+    }
+
+    switch (rentalName) {
+
+        case myName:
         return <Return deviceId={deviceId} item={item} history={history} user={state.user} />;
 
+        default:
+        return <Borrow deviceId={deviceId} item={item} history={history} user={state.user} />
+
     }
+
 
 }
 
@@ -37,18 +48,14 @@ const ShowRental = (props) => {
     } = props;
 
     return (
-
         <TransitionGroup>
             <CSSTransition
                 key={key}
                 timeout={300}
                 classNames="rental">
-
                 <ShowItem props={props} />
-
             </CSSTransition>
         </TransitionGroup>
-
     )
 
 }

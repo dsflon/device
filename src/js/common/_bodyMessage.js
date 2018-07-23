@@ -6,11 +6,14 @@ class BodyMessage {
 
     }
 
-    AutoPlay(message) {
+    AutoPlay(message,callback,callback2) {
 
         if(!message) return false;
         this.Set(message)
-        setTimeout( this.Remove.bind(this), 2000)
+        setTimeout( () => {
+            this.Remove(callback);
+            if(callback2) callback2();
+        }, 2000)
 
     }
 
@@ -25,11 +28,12 @@ class BodyMessage {
 
     }
 
-    Remove() {
+    Remove(callback) {
 
         const TransitionEnd = (e) => {
             let target = e.currentTarget;
             target.dataset.message = "";
+            if(callback) callback();
             target.removeEventListener("transitionend", TransitionEnd)
         }
 
