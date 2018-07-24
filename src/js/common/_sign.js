@@ -7,6 +7,8 @@ const Sign = {
         let signinData = {},
             inputData = data;
 
+        window.Loading.Show();
+
         let key = inputData.email.replace('.','_'),
             name = inputData.email.split('.');
             name = toUpperFirstLetter(name[0]) + " " + toUpperFirstLetter(name[1])
@@ -19,6 +21,9 @@ const Sign = {
         window.userRef.update(signinData).then( () => {
             localStorage.setItem(window.LSUser, JSON.stringify(signinData));
             if(callback) callback()
+        }).catch( (e) => {
+            window.BodyMessage.AutoPlay("サインアップに失敗しました");
+            window.Loading.Hide();
         });
 
     },
@@ -27,6 +32,8 @@ const Sign = {
 
         let signinData = {},
             key = data.email.replace( '.', '_' );
+
+        window.Loading.Show();
 
         window.userRef.child(key).once('value').then( (snapshot) => {
 
@@ -39,6 +46,11 @@ const Sign = {
             localStorage.setItem(window.LSUser, JSON.stringify(signinData));
             if(callback) callback()
 
+        }).catch( (e) => {
+
+            window.BodyMessage.AutoPlay("アカウントが存在しません");
+            window.Loading.Hide();
+
         });
 
     },
@@ -48,11 +60,15 @@ const Sign = {
         let res = confirm("サインアウトしますか？");
         if( res == true ) {
 
+            window.Loading.Show();
+
             let signinData = {};
                 signinData[data] = null;
             localStorage.setItem(window.LSUser, JSON.stringify(signinData));
 
             if(callback) callback();
+        } else {
+            window.Loading.Hide();
         }
 
     },
@@ -76,9 +92,11 @@ const Sign = {
         .then(() => {
             let res = confirm("アカウントを削除しますか？");
             if( res == true && stuser ) {
+                window.Loading.Show();
                 window.userRef.child(stuser).remove().then( () => {
                     localStorage.removeItem(window.LSUser);
                     localStorage.removeItem(window.LSData);
+                    window.Loading.Hide();
                     if(callback) callback();
                 });
             }

@@ -40,7 +40,6 @@ class SignIn extends React.Component {
 
     Remove(e) {
         e.preventDefault();
-        window.Loading.Show();
         Sign.Remove(() => {
             location.replace('/signup')
         });
@@ -48,7 +47,6 @@ class SignIn extends React.Component {
 
     SignIn(e) {
         e.preventDefault();
-        window.Loading.Show();
 
         Sign.In(this.state.inputData, () => {
             location.replace('/')

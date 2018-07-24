@@ -35,7 +35,6 @@ class SignUp extends React.Component {
     SignUp(e) {
 
         e.preventDefault();
-        window.Loading.Show();
 
         Sign.Up(this.state.inputData, () => {
             location.replace('/');

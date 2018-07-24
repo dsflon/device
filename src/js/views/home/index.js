@@ -44,7 +44,6 @@ class App extends React.Component {
 
     Remove(e) {
         e.preventDefault();
-        window.Loading.Show();
         Sign.Remove(() => {
             location.replace('/signup');
         });
@@ -52,7 +51,6 @@ class App extends React.Component {
 
     SignOut(e) {
         e.preventDefault();
-        window.Loading.Show();
         Sign.Out( Object.keys(this.state.user)[0], () => {
             location.replace('/signin');
         } );
@@ -115,16 +113,18 @@ class App extends React.Component {
 
                 <Header OpenMenu={this.OpenMenu.bind(this)} />
 
-                <nav id="header_nav" ref="header_nav">
-                    <Link to="/edit_profile" className="header_user">
-                        <p>{this.user.dep + ": " + this.user.name}</p>
-                        <span> さん</span>
-                    </Link>
-                    <ul>
-                        <li><button onClick={this.SignOut.bind(this)}>Sign Out</button></li>
-                        <li><button onClick={this.Remove.bind(this)}>Remove Account</button></li>
-                    </ul>
-                </nav>
+                <div className="header_nav f-inner">
+                    <nav className="header_nav_inner" ref="header_nav">
+                        <Link to="/edit_profile" className="header_user">
+                            <p>{this.user.dep + ": " + this.user.name}</p>
+                            <span> さん</span>
+                        </Link>
+                        <ul>
+                            <li><button onClick={this.SignOut.bind(this)}>Sign Out</button></li>
+                            <li><button onClick={this.Remove.bind(this)}>Remove Account</button></li>
+                        </ul>
+                    </nav>
+                </div>
 
                 <div className="f-inner lists_wrap" ref="list_area" onClick={this.CloseMenu.bind(this)}>
                     <Items state={this.state} rental={this.ClickRental.bind(this)} />

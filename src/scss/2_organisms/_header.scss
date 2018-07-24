@@ -32,9 +32,10 @@
     }
 
 
-    #header_nav {
+    .header_nav { position: relative; height: 0; }
+    .header_nav_inner {
         position: absolute;
-        top: 50px; right: 10px;
+        top: 0px; right: 10px;
         max-width: calc(100% - 20px);
         background: #FFF;
         z-index: 2;
@@ -82,11 +83,9 @@
                 }
                 a {
                     color: $color_text;
-                    // @include arrowAbs($color: $color_text, $size:8, $width:1, $layout:right, $position:20, $direction:right);
                 }
                 button {
                     color: $color_text;
-                    // @include arrowAbs($color: $color_text, $size:8, $width:1, $layout:right, $position:20, $direction:right);
                 }
             }
         }
