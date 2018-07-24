@@ -19,46 +19,138 @@
 
         "iPhone": {
             "sort": 0,
-            "3": {
-                "name": "iPhone 6s",
-                "image": "/images/iphone.png",
-                "os": "iOS 11.1",
-                "sim": false,
-                "sort": 2
-            },
-            "2": {
+            "1": {
                 "name": "iPhone 6 Plus",
-                "image": "/images/iphone.png",
+                "image": "/images/device/dammy.png",
                 "os": "iOS 11.1",
                 "sim": true,
                 "sort": 0
             },
-            "1": {
-                "name": "iPhone 6s",
-                "image": "/images/iphone.png",
-                "os": "iOS 11.1",
+            "5": {
+                "name": "iPhone 6",
+                "image": "/images/device/iphone_6.png",
+                "os": "iOS 11.1.2",
                 "sim": true,
-                "sort": 1,
-                "user": null
+                "sort": 1
+            },
+            "2": {
+                "name": "iPhone 6",
+                "image": "/images/device/iphone_6.png",
+                "os": "iOS 10.2.1",
+                "sim": true,
+                "sort": 2
+            },
+            "3": {
+                "name": "iPhone 5s",
+                "image": "/images/device/iphone_5_s.png",
+                "os": "iOS 8.1.1",
+                "sim": true,
+                "sort": 3
+            },
+            "4": {
+                "name": "iPhone 5",
+                "image": "/images/device/iphone_5.png",
+                "os": "iOS 10.2.1",
+                "sim": false,
+                "sort": 4
             }
         },
 
-        "android": {
+        "Android": {
             "sort": 1,
-            "10": {
+            "18": {
                 "name": "HUAWEI P10 lite",
-                "image": "/images/HUAWEI_P10_lite.png",
+                "image": "/images/device/android_HUAWEI_P10_lite.png",
                 "os": "android 7.0",
                 "sim": false,
-                "sort": 0,
-                "user": null
+                "sort": 0
             },
-            "11": {
-                "name": "HUAWEI P10",
-                "image": "/images/HUAWEI_P10_lite.png",
-                "os": "android 6.0",
+            "13": {
+                "name": "Xperia AX SO-01E",
+                "image": "/images/device/android_Xperia_AX_SO-01E.png",
+                "os": "android 4.1.2",
                 "sim": false,
                 "sort": 1
+            },
+            "19": {
+                "name": "AQUOS SERIE",
+                "image": "/images/device/android_AQUOS_SERIE.png",
+                "os": "android 4.4.2",
+                "sim": true,
+                "sort": 2
+            },
+            "20": {
+                "name": "URBANO L03",
+                "image": "/images/device/android_URBANO_L03.png",
+                "os": "android 4.4.2",
+                "sim": false,
+                "sort": 3
+            }
+        },
+
+        "iPad Air": {
+            "sort": 2,
+            "21": {
+                "name": "iPad Air",
+                "image": "/images/device/iPad_Air.png",
+                "os": "iOS 11.2.2",
+                "sim": true,
+                "sort": 0
+            },
+            "22": {
+                "name": "iPad Air",
+                "image": "/images/device/iPad_Air.png",
+                "os": "iOS 10.1.1",
+                "sim": false,
+                "sort": 1
+            },
+            "23": {
+                "name": "iPad Air",
+                "image": "/images/device/iPad_Air.png",
+                "os": "iOS 9.1",
+                "sim": false,
+                "sort": 3
+            },
+            "24": {
+                "name": "iPad4",
+                "image": "/images/device/iPad_4.png",
+                "os": "iOS 8.3",
+                "sim": false,
+                "sort": 4
+            }
+
+        },
+
+        "Other Tablet": {
+            "sort": 3,
+            "41": {
+                "name": "Surface Pro 3",
+                "image": "/images/device/other_Surface_Pro_3.png",
+                "os": "Win10",
+                "sim": false,
+                "sort": 0
+            }
+        },
+
+        "Feature Phone": {
+            "sort": 4,
+            "51": {
+                "name": "【au】GRANTIA",
+                "image": "/images/device/feature_GRANTIA.png",
+                "sim": false,
+                "sort": 0
+            },
+            "52": {
+                "name": "【SoftBank】202SH",
+                "image": "/images/device/feature_202SH.png",
+                "sim": false,
+                "sort": 1
+            },
+            "53": {
+                "name": "【docomo】AQUOS SHOT",
+                "image": "/images/device/feature_AQUOS_SHOT.png",
+                "sim": false,
+                "sort": 2
             }
         }
 
