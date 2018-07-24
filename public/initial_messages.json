@@ -4,6 +4,14 @@
         "daiki_saito": {
             "dep": "TEC",
             "name": "daiki saito"
+        },
+        "junko_tokiwa": {
+            "dep": "TEC",
+            "name": "Junko Tokiwa"
+        },
+        "taro_sato": {
+            "dep": "TEC",
+            "name": "Taro Sato"
         }
     },
 
@@ -16,28 +24,14 @@
                 "image": "/images/iphone.png",
                 "os": "iOS 11.1",
                 "sim": false,
-                "sort": 2,
-                "user": {
-                    "uid": "taro_sato",
-                    "dep": "EM1",
-                    "name": "taro sato",
-                    "timestamp": 1459361875666
-                },
-                "log": null
+                "sort": 2
             },
             "2": {
                 "name": "iPhone 6 Plus",
                 "image": "/images/iphone.png",
                 "os": "iOS 11.1",
                 "sim": true,
-                "sort": 0,
-                "user": {
-                    "uid": "daiki_saito",
-                    "dep": "TEC",
-                    "name": "daiki saito",
-                    "timestamp": 1459361875666
-                },
-                "log": null
+                "sort": 0
             },
             "1": {
                 "name": "iPhone 6s",
@@ -45,8 +39,7 @@
                 "os": "iOS 11.1",
                 "sim": true,
                 "sort": 1,
-                "user": null,
-                "log": null
+                "user": null
             }
         },
 
@@ -58,22 +51,14 @@
                 "os": "android 7.0",
                 "sim": false,
                 "sort": 0,
-                "user": null,
-                "log": null
+                "user": null
             },
             "11": {
                 "name": "HUAWEI P10",
                 "image": "/images/HUAWEI_P10_lite.png",
                 "os": "android 6.0",
                 "sim": false,
-                "sort": 1,
-                "user": {
-                    "uid": "daiki_saito",
-                    "dep": "TEC",
-                    "name": "daiki saito",
-                    "timestamp": 1531452370674
-                },
-                "log": null
+                "sort": 1
             }
         }
 

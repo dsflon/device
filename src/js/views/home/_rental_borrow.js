@@ -15,7 +15,7 @@ const Do = (history,user,e) => {
         userData["timestamp"] = new Date().getTime();
 
     let userRef = window.userRef.child(Object.keys(user)[0]+"/device"),
-        devideRef = window.devideRef.child(keyCat+"/"+keyNum+"/user");
+        devideRef = window.devideRef.child(keyCat+"/"+keyNum);
 
     let userRefObj = {};
         userRefObj[deviceId] = true;
@@ -23,7 +23,7 @@ const Do = (history,user,e) => {
     Promise.resolve()
     .then(() => {
         return new Promise((resolve, reject) => {
-            devideRef.once('value').then( (snapshot) => {
+            devideRef.child("user").once('value').then( (snapshot) => {
                 let data = snapshot.val();
                 !data ? resolve() : reject();
             });
@@ -34,7 +34,7 @@ const Do = (history,user,e) => {
             setTimeout( resolve, 300);
         });
     }).then(() => {
-        devideRef.set(userData).then( () => {
+        devideRef.child("user").set(userData).then( () => {
             userRef.update(userRefObj);
             window.BodyMessage.AutoPlay(deviceName + " を借りました");
             window.Loading.Hide();

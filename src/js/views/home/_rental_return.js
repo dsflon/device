@@ -10,13 +10,28 @@ const Do = (history,user,e) => {
         keyNum = deviceId.split("_")[1];
         window.Loading.Show();
 
+    let timestamp = new Date(),
+        year = timestamp.getFullYear(),
+        month = timestamp.getMonth()+1,
+        day = timestamp.getDate();
+
+        timestamp = timestamp.getTime() + "__" + year + "_" + month + "_" + day;
+
+    let userData = Object.keys(user)[0];
+        userData = user[userData];
+
+    let log = {};
+        log[timestamp] = {};
+        log[timestamp]["name"] = userData.name;
+        log[timestamp]["dep"] = userData.dep;
+
     let userRef = window.userRef.child(Object.keys(user)[0]+"/device/" + deviceId),
-        devideRef = window.devideRef.child(keyCat+"/"+keyNum+"/user");
+        devideRef = window.devideRef.child(keyCat+"/"+keyNum);
 
     Promise.resolve()
     .then(() => {
         return new Promise((resolve, reject) => {
-            devideRef.once('value').then( (snapshot) => {
+            devideRef.child("user").once('value').then( (snapshot) => {
                 let data = snapshot.val();
                 data ? resolve() : reject();
             });
@@ -27,11 +42,12 @@ const Do = (history,user,e) => {
             setTimeout( resolve, 300);
         });
     }).then(() => {
-        devideRef.remove().then( () => {
+        devideRef.child("user").remove().then( () => {
             window.BodyMessage.AutoPlay(deviceName + " を返却しました");
             userRef.remove();
             window.Loading.Hide();
         });
+        devideRef.child("log").update(log);
     }).catch((e) => {
         // history.push("/");
         // userRef.remove();
