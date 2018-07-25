@@ -27,6 +27,7 @@ class App extends React.Component {
         if(this.stuser && Object.values(this.stuser)[0] ) {
             // 既サインイン時
             window.actions.User( this.stuser );
+            window.userRef.update( this.stuser ); // DBからアカウントが削除されていたときの保険
             Fetch();
         } else if( this.stuser && !Object.values(this.stuser)[0] ) {
             // サインアウト時

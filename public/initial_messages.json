@@ -1,13 +1,9 @@
 {
 
-    "user": {
+    "users": {
         "daiki_saito": {
             "dep": "TEC",
             "name": "daiki saito"
-        },
-        "junko_tokiwa": {
-            "dep": "TEC",
-            "name": "Junko Tokiwa"
         },
         "taro_sato": {
             "dep": "TEC",
@@ -15,7 +11,7 @@
         }
     },
 
-    "device": {
+    "devices": {
 
         "iPhone": {
             "sort": 0,

@@ -11,7 +11,7 @@ import reducer from './reducers'
 import Root from './_root';
 
 import BodyMessage from './common/_bodyMessage';
-import CheckNetwork from './common/_checkNetwork';
+import Network from './common/_checkNetwork';
 
 //scss
 import '../scss/style.scss'
@@ -44,7 +44,8 @@ let store = createStore(reducer,initialState);
 */
 window.LSUser = "deviceRentalSystem";
 window.LSData = "deviceRentalSystemData";
-window.CheckNetwork = new CheckNetwork();
+window.Network = new Network();
+
 window.BodyMessage = new BodyMessage(document.getElementById('app'));
 window.Loading = {
     Show: () => { document.body.classList.add("loading") },
@@ -61,7 +62,7 @@ window.onload = () => {
     window.database = firebase.database();
 
     window.userRef = window.database.ref('users');
-    window.devideRef = window.database.ref('device');
+    window.devideRef = window.database.ref('devices');
     /* Firebase Initialize */
 
     /*

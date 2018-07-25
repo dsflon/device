@@ -1,17 +1,13 @@
 /*
 ** Check Network
 */
-class CheckNetwork {
+class Network {
 
     constructor() {
     }
 
     Check() {
-        if( !navigator.onLine ) {
-            return false;
-        } else {
-            return true;
-        }
+        return navigator.onLine;
     }
 
     AddClassHTML() {
@@ -29,4 +25,4 @@ class CheckNetwork {
 }
 
 
-export default CheckNetwork;
+export default Network;
