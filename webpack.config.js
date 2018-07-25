@@ -8,7 +8,7 @@ const ROOT_PATH_NAME = 'public';
 ** JS Setting
 ***************************************/
 const ENTRY = {
-    'bundle': './src/js/index.js'
+    'assets/js/bundle': './src/js/index.js'
 }
 const SOURCE_MAP_STYLE = 'inline-source-map'; // 'inline-source-map', 'source-map', etc.
 
@@ -109,7 +109,7 @@ module.exports = {
             cacheGroups: {
                 vendor: {
                     test: /react|react-dom|react-router-dom|redux|react-redux/,
-                    name: "vendor",
+                    name: "assets/js/vendor",
                     chunks: "initial",
                     enforce: true,
                 },
