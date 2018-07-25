@@ -34,12 +34,17 @@ const Do = (history,user,e) => {
             setTimeout( resolve, 300);
         });
     }).then(() => {
-        devideRef.child("user").set(userData).then( () => {
-            userRef.update(userRefObj);
-            window.BodyMessage.AutoPlay(deviceName + " を借りました");
-            window.Loading.Hide();
+        return new Promise((resolve, reject) => {
+            devideRef.child("user").set(userData).then( () => {
+                userRef.update(userRefObj);
+                window.BodyMessage.AutoPlay(deviceName + " を借りました");
+                window.Loading.Hide();
+            }).catch((e) => {
+                reject(e);
+            });
         });
     }).catch((e) => {
+        console.log(e);
         // history.push("/");
         // window.Loading.Hide();
         // window.BodyMessage.AutoPlay(deviceName + " は貸出中です");
