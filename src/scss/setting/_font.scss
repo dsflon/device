@@ -6,22 +6,31 @@
 	@font-face {
 	    font-family: 'NotoSansCJKjp-DemiLight';
 	    font-style: normal;
-	    src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff2) format('woff2'),
-	    url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff) format('woff'),
-	    url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.otf) format('opentype');
+	    src: url('/assets/font/NotoSansCJKjp-DemiLight.woff2') format('woff2'),
+			 url('/assets/font/NotoSansCJKjp-DemiLight.woff') format('woff');
 	}
 	@font-face {
-	    font-family: 'NotoSansCJKjp-Medium';
+	    font-family: 'NotoSansCJKjp-Bold';
 	    font-style: normal;
-	    src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.woff2) format('woff2'),
-	    url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.woff) format('woff'),
-	    url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.otf) format('opentype');
+	    src: url('/assets/font/NotoSansCJKjp-Bold.woff2') format('woff2'),
+			 url('/assets/font/NotoSansCJKjp-Bold.woff') format('woff');
 	}
 
-	@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700);
+	// @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700);
+
+	@font-face {
+		font-family: 'Roboto Mono';
+		src: url('/assets/font/RobotoMono-Regular.woff2') format('woff2'),
+			 url('/assets/font/RobotoMono-Regular.woff') format('woff'); /* Legacy iOS */
+	}
+	@font-face {
+		font-family: 'Roboto Mono bold';
+		src: url('/assets/font/RobotoMono-Bold.woff2') format('woff2'),
+			 url('/assets/font/RobotoMono-Bold.woff') format('woff'); /* Legacy iOS */
+	}
 
 	$font_base: 'Roboto Mono', 'NotoSansCJKjp-DemiLight','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
-	$font_bold: 'Roboto Mono', 'NotoSansCJKjp-Medium', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	$font_bold: 'Roboto Mono bold', 'NotoSansCJKjp-Bold', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 	$font_noto: 'NotoSansCJKjp-DemiLight', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 
 // Font Size

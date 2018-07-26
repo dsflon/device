@@ -1,4 +1,4 @@
-const VERSION = '1.0.1';
+const VERSION = '1.0.9';
 
 const CACHE_NAME = 'DeviceRentalSystem_' + VERSION;
 
@@ -25,8 +25,19 @@ const DEVICE_IMAGES = [
     ROOT + "assets/images/device/iphone_6.png",
     ROOT + "assets/images/device/other_Surface_Pro_3.png"
 ];
+const FONTS = [
+    ROOT + "assets/font/NotoSansCJKjp-DemiLight.woff",
+    ROOT + "assets/font/NotoSansCJKjp-DemiLight.woff2",
+    ROOT + "assets/font/NotoSansCJKjp-Bold.woff",
+    ROOT + "assets/font/NotoSansCJKjp-Bold.woff2",
+    ROOT + "assets/font/RobotoMono-Regular.woff",
+    ROOT + "assets/font/RobotoMono-Regular.woff2",
+    ROOT + "assets/font/RobotoMono-Bold.woff",
+    ROOT + "assets/font/RobotoMono-Bold.woff2"
+];
 
 let CACHE = CACHE_FILE.concat(DEVICE_IMAGES);
+    CACHE = CACHE.concat(FONTS);
 
 let CheckFile =[];
 for (var i = 0; i < CACHE.length; i++) {
