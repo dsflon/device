@@ -1,4 +1,4 @@
-const VERSION = '1.0.9';
+const VERSION = '1.0.0';
 
 const CACHE_NAME = 'DeviceRentalSystem_' + VERSION;
 

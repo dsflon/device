@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Link } from "react-router-dom";
+import logo from '../../../images/logo.svg';
 import icon from '../../../images/icon_user.svg';
 
 class Header extends React.Component {
@@ -15,9 +16,11 @@ class Header extends React.Component {
             <div>
                 <header id="header">
                     <div id="header_inner" className="f-inner">
-                        <h1 className="header_ttl a-ttl">DEVICE RS</h1>
+                        <h1 className="header_ttl a-ttl"><img src={logo} alt="DEVICE RS" /></h1>
                         <div className="header_wrap">
-                            <button className="header_btn" onClick={this.props.OpenMenu.bind(this)}><img src={icon} /></button>
+                            <button className="header_btn" onClick={this.props.OpenMenu.bind(this)}>
+                                <img src={icon} />
+                            </button>
                         </div>
                     </div>
                 </header>

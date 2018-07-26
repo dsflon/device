@@ -41,6 +41,7 @@
 
                     &[data-user="own"] {
                         background: $color_main;
+                        // background: linear-gradient(to bottom, #c43535 0%,$color_main 50%,#c41835 100%);
                         color: #FFF;
                         &[data-sim="true"] {
                             .m-device_ttl:after { background: #FFF; color: $color_main; }
