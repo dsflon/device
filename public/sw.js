@@ -95,7 +95,7 @@ self.addEventListener('fetch', function(event) {
 
                 if (response) {
                     // return cached file
-                    console.log('cache fetch: ' + event.request.url);
+                    // console.log('cache fetch: ' + event.request.url);
                     return response;
                 }
 

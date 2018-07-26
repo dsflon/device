@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 
 const Do = (history,user,e) => {
 
@@ -80,6 +81,9 @@ class Borrow extends React.Component {
 
         return (
             <section className="rental">
+
+                <Helmet title={item.name+" を借りますか？"}></Helmet>
+
                 <div className="rental_inner borrow">
 
                     <div

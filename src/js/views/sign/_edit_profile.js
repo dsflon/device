@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import Sign from '../../common/_sign';
 import Validate from '../../common/_validate';
@@ -46,6 +47,7 @@ class EditProfile extends React.Component {
         return (
             <div id="sign" className="contents">
 
+                <Helmet title="Edit profile"></Helmet>
                 <h1 className="sign_ttl a-ttl a-ttl_l">Edit profile</h1>
 
                 <form id="sign_form" ref="sign_form">

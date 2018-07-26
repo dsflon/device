@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 
 const Do = (history,user,e) => {
 
@@ -72,6 +73,9 @@ const Return = (props) => {
 
     return (
         <section className="rental">
+
+            <Helmet title={item.name+" を返却しますか？"}></Helmet>
+
             <div className="rental_inner return">
 
                 <div className="rental_device m-device" data-sim={item.sim} data-devicenum={deviceNum}>

@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as ActionCreators from '../../actions';
 
+import { Helmet } from "react-helmet";
 import Sign from '../../common/_sign';
 import Fetch from '../../common/_fetch';
 import Header from './_header';
@@ -111,6 +112,8 @@ class App extends React.Component {
 
         return (
             <div id="home" className="contents">
+
+                <Helmet title="Device Rental System"></Helmet>
 
                 <Header OpenMenu={this.OpenMenu.bind(this)} />
 
