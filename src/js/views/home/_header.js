@@ -12,8 +12,14 @@ class Header extends React.Component {
 
     render() {
 
+        // return (
+        //         <header id="header">
+        //             <button className="header_btn" onClick={this.props.OpenMenu.bind(this)}>
+        //                 <img src={icon} />
+        //             </button>
+        //         </header>
+        // );
         return (
-            <div>
                 <header id="header">
                     <div id="header_inner" className="f-inner">
                         <h1 className="header_ttl a-ttl"><img src={logo} alt="DEVICE RS" /></h1>
@@ -24,7 +30,6 @@ class Header extends React.Component {
                         </div>
                     </div>
                 </header>
-            </div>
         );
 
     }

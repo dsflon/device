@@ -11,7 +11,7 @@
     }
 
     .lists {
-        padding: 0 10px 20px;
+        padding: 0 0px 20px;
 
         .lists_notice {
             color: $color_main;
@@ -31,13 +31,17 @@
 
                 .list_item_btn {
                     background: #FFF;
-                    border-radius: 5px 4px 4px 4px;
-                    box-shadow: 0 0 5px 0 rgba(#000,0.1);
+                    // border-radius: 5px 4px 4px 4px;
+                    // box-shadow: 0 0 5px 0 rgba(#000,0.1);
                     width: 100%; min-height: 120px;
                     text-align: left;
                     padding: 20px;
                     position: relative;
                     transition: background 0.2s ease;
+
+                    &:before {
+                        border-top-left-radius: 0;
+                    }
 
                     &[data-user="own"] {
                         background: $color_main;
