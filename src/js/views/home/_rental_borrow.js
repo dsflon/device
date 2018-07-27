@@ -24,9 +24,12 @@ const Do = (history,user,e) => {
     Promise.resolve()
     .then(() => {
         return new Promise((resolve, reject) => {
+            if(!window.Network.Check()) reject("ネットワークをご確認ください!");
             devideRef.child("user").once('value').then( (snapshot) => {
                 let data = snapshot.val();
-                !data ? resolve() : reject();
+                !data ? resolve() : reject(deviceName + " は貸出中です");
+            }).catch(() => {
+                reject()
             });
         });
     }).then(() => {
@@ -44,11 +47,9 @@ const Do = (history,user,e) => {
                 reject();
             });
         });
-    }).catch(() => {
-        console.error("!! ネットワークをご確認ください !!");
-        // history.push("/");
-        // window.Loading.Hide();
-        // window.BodyMessage.AutoPlay(deviceName + " は貸出中です");
+    }).catch((message) => {
+        window.Loading.Hide();
+        if(message) window.BodyMessage.AutoPlay(message);
     });
 
 }

@@ -32,9 +32,12 @@ const Do = (history,user,e) => {
     Promise.resolve()
     .then(() => {
         return new Promise((resolve, reject) => {
+            if(!window.Network.Check()) reject("ネットワークをご確認ください!");
             devideRef.child("user").once('value').then( (snapshot) => {
                 let data = snapshot.val();
-                data ? resolve() : reject();
+                data ? resolve() : reject("既に返却済みです");
+            }).catch(() => {
+                reject()
             });
         });
     }).then(() => {
@@ -49,12 +52,9 @@ const Do = (history,user,e) => {
             window.Loading.Hide();
         });
         devideRef.child("log").update(log);
-    }).catch((e) => {
-        console.error("!! ネットワークをご確認ください !!");
-        // history.push("/");
-        // userRef.remove();
-        // window.Loading.Hide();
-        // window.BodyMessage.AutoPlay("既に返却済みです");
+    }).catch((message) => {
+        window.Loading.Hide();
+        if(message) window.BodyMessage.AutoPlay(message);
     });
 
 }

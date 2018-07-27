@@ -55,7 +55,7 @@ window.NetworkMessage = () => {
     if(window.Network.Check()) {
         window.BodyMessage.Remove();
     } else {
-        window.BodyMessage.Set("!! ネットワークをご確認ください !!");
+        window.BodyMessage.Set("ネットワークをご確認ください!");
     }
 }
 
