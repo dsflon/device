@@ -51,6 +51,13 @@ window.Loading = {
     Show: () => { document.body.classList.add("loading") },
     Hide: () => { document.body.classList.remove("loading") }
 };
+window.NetworkMessage = () => {
+    if(window.Network.Check()) {
+        window.BodyMessage.Remove();
+    } else {
+        window.BodyMessage.Set("!! ネットワークをご確認ください !!");
+    }
+}
 
 
 /*

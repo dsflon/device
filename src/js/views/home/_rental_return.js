@@ -50,6 +50,7 @@ const Do = (history,user,e) => {
         });
         devideRef.child("log").update(log);
     }).catch((e) => {
+        console.error("!! ネットワークをご確認ください !!");
         // history.push("/");
         // userRef.remove();
         // window.Loading.Hide();

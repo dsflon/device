@@ -43,6 +43,9 @@ class App extends React.Component {
     componentDidMount() {
         window.Loading.Hide();
     }
+    componentWillUpdate() {
+        window.NetworkMessage();
+    }
 
     Remove(e) {
         e.preventDefault();

@@ -32,7 +32,7 @@ const Do = (history,user,e) => {
     }).then(() => {
         return new Promise((resolve, reject) => {
             history.push("/");
-            setTimeout( resolve, 300);
+            setTimeout(resolve,300);
         });
     }).then(() => {
         return new Promise((resolve, reject) => {
@@ -40,12 +40,12 @@ const Do = (history,user,e) => {
                 userRef.update(userRefObj);
                 window.BodyMessage.AutoPlay(deviceName + " を借りました");
                 window.Loading.Hide();
-            }).catch((e) => {
-                reject(e);
+            }).catch(() => {
+                reject();
             });
         });
-    }).catch((e) => {
-        console.log(e);
+    }).catch(() => {
+        console.error("!! ネットワークをご確認ください !!");
         // history.push("/");
         // window.Loading.Hide();
         // window.BodyMessage.AutoPlay(deviceName + " は貸出中です");
