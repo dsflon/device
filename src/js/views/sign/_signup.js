@@ -26,9 +26,11 @@ class SignUp extends React.Component {
         if( this.stuser && Object.values(this.stuser)[0] ) {
             // 既サインイン時
             location.replace('/');
+            // this.history.replace('/')
         } else if( this.stuser && !Object.values(this.stuser)[0] ) {
             // サインアウト時
             location.replace('/signin');
+            // this.history.replace('/signin')
         }
 
     }
@@ -39,6 +41,7 @@ class SignUp extends React.Component {
 
         Sign.Up(this.state.inputData, () => {
             location.replace('/');
+            this.history.replace('/')
         });
 
     }

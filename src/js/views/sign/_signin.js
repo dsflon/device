@@ -42,7 +42,8 @@ class SignIn extends React.Component {
     Remove(e) {
         e.preventDefault();
         Sign.Remove(() => {
-            location.replace('/signup')
+            // location.replace('/signup')
+            this.history.replace('/')
         });
     }
 
@@ -50,7 +51,8 @@ class SignIn extends React.Component {
         e.preventDefault();
 
         Sign.In(this.state.inputData, () => {
-            location.replace('/')
+            // location.replace('/')
+            this.history.replace('/')
         });
     }
 

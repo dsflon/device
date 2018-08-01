@@ -42,7 +42,8 @@ const Do = (history,user,e) => {
         });
     }).then(() => {
         return new Promise((resolve, reject) => {
-            history.push("/");
+            // history.push("/");
+            history.replace("/")
             setTimeout( resolve, 300);
         });
     }).then(() => {
