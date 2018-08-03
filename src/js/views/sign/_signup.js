@@ -82,8 +82,9 @@ class SignUp extends React.Component {
                                 input="email"
                                 placeholder=""
                                 ref="input_email"
+                                placeholder="taro.tsukiji"
                                 onInput={this.props.InputEmail.bind(this)} />
-                            <span>@isobar.com</span>
+                            <span>@test.com</span>
                         </div>
                         <p className="sing_error">{this.state.error.email}</p>
                     </div>
