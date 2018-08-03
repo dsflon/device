@@ -1,155 +1,152 @@
 {
-
-    "users": {
-        "daiki_saito": {
-            "dep": "TEC",
-            "name": "daiki saito"
-        },
-        "taro_sato": {
-            "dep": "TEC",
-            "name": "Taro Sato"
-        }
+  "devices" : {
+    "Android" : {
+      "13" : {
+        "image" : "/assets/images/device/android_Xperia_AX_SO-01E.png",
+        "name" : "Xperia AX SO-01E",
+        "os" : "android 4.1.2",
+        "sim" : false,
+        "sort" : 1
+      },
+      "18" : {
+        "image" : "/assets/images/device/android_HUAWEI_P10_lite.png",
+        "name" : "HUAWEI P10 lite",
+        "os" : "android 7.0",
+        "sim" : false,
+        "sort" : 0
+      },
+      "19" : {
+        "image" : "/assets/images/device/android_AQUOS_SERIE.png",
+        "name" : "AQUOS SERIE",
+        "os" : "android 4.4.2",
+        "sim" : true,
+        "sort" : 2
+      },
+      "20" : {
+        "image" : "/assets/images/device/android_URBANO_L03.png",
+        "name" : "URBANO L03",
+        "os" : "android 4.4.2",
+        "sim" : false,
+        "sort" : 3
+      },
+      "sort" : 1
     },
-
-    "devices": {
-
-        "iPhone": {
-            "sort": 0,
-            "1": {
-                "name": "iPhone 6 Plus",
-                "image": "/assets/images/device/iphone_6_plus.png",
-                "os": "iOS 11.1",
-                "sim": true,
-                "sort": 0
-            },
-            "5": {
-                "name": "iPhone 6",
-                "image": "/assets/images/device/iphone_6.png",
-                "os": "iOS 11.1.2",
-                "sim": true,
-                "sort": 1
-            },
-            "2": {
-                "name": "iPhone 6",
-                "image": "/assets/images/device/iphone_6.png",
-                "os": "iOS 10.2.1",
-                "sim": true,
-                "sort": 2
-            },
-            "3": {
-                "name": "iPhone 5s",
-                "image": "/assets/images/device/iphone_5_s.png",
-                "os": "iOS 8.1.1",
-                "sim": true,
-                "sort": 3
-            },
-            "4": {
-                "name": "iPhone 5",
-                "image": "/assets/images/device/iphone_5.png",
-                "os": "iOS 10.2.1",
-                "sim": false,
-                "sort": 4
-            }
-        },
-
-        "Android": {
-            "sort": 1,
-            "18": {
-                "name": "HUAWEI P10 lite",
-                "image": "/assets/images/device/android_HUAWEI_P10_lite.png",
-                "os": "android 7.0",
-                "sim": false,
-                "sort": 0
-            },
-            "13": {
-                "name": "Xperia AX SO-01E",
-                "image": "/assets/images/device/android_Xperia_AX_SO-01E.png",
-                "os": "android 4.1.2",
-                "sim": false,
-                "sort": 1
-            },
-            "19": {
-                "name": "AQUOS SERIE",
-                "image": "/assets/images/device/android_AQUOS_SERIE.png",
-                "os": "android 4.4.2",
-                "sim": true,
-                "sort": 2
-            },
-            "20": {
-                "name": "URBANO L03",
-                "image": "/assets/images/device/android_URBANO_L03.png",
-                "os": "android 4.4.2",
-                "sim": false,
-                "sort": 3
-            }
-        },
-
-        "iPad Air": {
-            "sort": 2,
-            "21": {
-                "name": "iPad Air",
-                "image": "/assets/images/device/iPad_Air.png",
-                "os": "iOS 11.2.2",
-                "sim": true,
-                "sort": 0
-            },
-            "22": {
-                "name": "iPad Air",
-                "image": "/assets/images/device/iPad_Air.png",
-                "os": "iOS 10.1.1",
-                "sim": false,
-                "sort": 1
-            },
-            "23": {
-                "name": "iPad Air",
-                "image": "/assets/images/device/iPad_Air.png",
-                "os": "iOS 9.1",
-                "sim": false,
-                "sort": 3
-            },
-            "24": {
-                "name": "iPad4",
-                "image": "/assets/images/device/iPad_4.png",
-                "os": "iOS 8.3",
-                "sim": false,
-                "sort": 4
-            }
-
-        },
-
-        "Other Tablet": {
-            "sort": 3,
-            "41": {
-                "name": "Surface Pro 3",
-                "image": "/assets/images/device/other_Surface_Pro_3.png",
-                "os": "Win10",
-                "sim": false,
-                "sort": 0
-            }
-        },
-
-        "Feature Phone": {
-            "sort": 4,
-            "51": {
-                "name": "【au】GRANTIA",
-                "image": "/assets/images/device/feature_GRANTIA.png",
-                "sim": false,
-                "sort": 0
-            },
-            "52": {
-                "name": "【SoftBank】202SH",
-                "image": "/assets/images/device/feature_202SH.png",
-                "sim": false,
-                "sort": 1
-            },
-            "53": {
-                "name": "【docomo】AQUOS SHOT",
-                "image": "/assets/images/device/feature_AQUOS_SHOT.png",
-                "sim": false,
-                "sort": 2
-            }
+    "Feature Phone" : {
+      "51" : {
+        "image" : "/assets/images/device/feature_GRANTIA.png",
+        "name" : "【au】GRANTIA",
+        "sim" : false,
+        "sort" : 0
+      },
+      "52" : {
+        "image" : "/assets/images/device/feature_202SH.png",
+        "name" : "【SoftBank】202SH",
+        "sim" : false,
+        "sort" : 1
+      },
+      "53" : {
+        "image" : "/assets/images/device/feature_AQUOS_SHOT.png",
+        "name" : "【docomo】AQUOS SHOT",
+        "sim" : false,
+        "sort" : 2
+      },
+      "sort" : 4
+    },
+    "Other Tablet" : {
+      "41" : {
+        "image" : "/assets/images/device/other_Surface_Pro_3.png",
+        "name" : "Surface Pro 3",
+        "os" : "Win10",
+        "sim" : false,
+        "sort" : 0
+      },
+      "sort" : 3
+    },
+    "iPad Air" : {
+      "21" : {
+        "image" : "/assets/images/device/iPad_Air.png",
+        "name" : "iPad Air",
+        "os" : "iOS 11.2.2",
+        "sim" : true,
+        "sort" : 0
+      },
+      "22" : {
+        "image" : "/assets/images/device/iPad_Air.png",
+        "name" : "iPad Air",
+        "os" : "iOS 10.1.1",
+        "sim" : false,
+        "sort" : 1
+      },
+      "23" : {
+        "image" : "/assets/images/device/iPad_Air.png",
+        "name" : "iPad Air",
+        "os" : "iOS 9.1",
+        "sim" : false,
+        "sort" : 3
+      },
+      "24" : {
+        "image" : "/assets/images/device/iPad_4.png",
+        "name" : "iPad4",
+        "os" : "iOS 8.3",
+        "sim" : false,
+        "sort" : 4
+      },
+      "sort" : 2
+    },
+    "iPhone" : {
+      "1" : {
+        "image" : "/assets/images/device/iphone_6_plus.png",
+        "name" : "iPhone 6 Plus",
+        "os" : "iOS 11.1",
+        "sim" : true,
+        "sort" : 0
+      },
+      "2" : {
+        "image" : "/assets/images/device/iphone_6.png",
+        "name" : "iPhone 6",
+        "os" : "iOS 10.2.1",
+        "sim" : true,
+        "sort" : 2,
+        "user" : {
+          "dep" : "TEC",
+          "name" : "Daiki Saito",
+          "timestamp" : 1433277237085,
+          "uid" : "daiki_saito"
         }
+      },
+      "3" : {
+        "image" : "/assets/images/device/iphone_5_s.png",
+        "name" : "iPhone 5s",
+        "os" : "iOS 8.1.1",
+        "sim" : true,
+        "sort" : 3
+      },
+      "4" : {
+        "image" : "/assets/images/device/iphone_5.png",
 
+        "name" : "iPhone 5",
+        "os" : "iOS 10.2.1",
+        "sim" : false,
+        "sort" : 4
+      },
+      "6" : {
+        "image" : "/assets/images/device/iphone_6.png",
+        "name" : "iPhone 6",
+        "os" : "iOS 11.1.2",
+        "sim" : true,
+        "sort" : 1
+      },
+      "sort" : 0
     }
-
+  },
+  "users" : {
+    "daiki_saito" : {
+      "dep" : "TEC",
+      "name" : "Daiki Saito"
+    },
+    "taro_sato" : {
+      "dep" : "TEC",
+      "name" : "Taro Sato"
+    }
+  }
 }

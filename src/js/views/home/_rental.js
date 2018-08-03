@@ -8,7 +8,8 @@ import Return from './_rental_return';
 const Close = (history,e) => {
 
     if(e) e.preventDefault();
-    history.push("/")
+    // history.push("/");
+    history.replace("/");
 
 }
 
