@@ -9,7 +9,9 @@ const Close = (history,e) => {
 
     if(e) e.preventDefault();
     // history.push("/");
-    history.replace("/");
+    setTimeout( () => { // setTimeoutしないと iosでhistory.replaceが効かない
+        history.replace("/");
+    },100)
 
 }
 
