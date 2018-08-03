@@ -103,7 +103,9 @@ class Borrow extends React.Component {
 
                     <div className="rental_main">
 
-                        <h1 className="a-ttl a-ttl_s">この端末を借りますか？</h1>
+                        <h1 className="a-ttl a-ttl_s">
+                            {(whose === "other") ? "この端末は貸し出されました" : "この端末を借りますか？" }
+                        </h1>
 
                         <div className="rental_notice">
                             <ul>
