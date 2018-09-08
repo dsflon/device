@@ -9,26 +9,13 @@ import { createStore } from 'redux'
 import reducer from './reducers'
 
 import Root from './_root';
+import FireInit from './fireinit';
 
 import BodyMessage from './common/_bodyMessage';
 import Network from './common/_checkNetwork';
 
 //scss
 import '../scss/style.scss'
-
-/*
-** Firebase Initialize
-*/
-const config = {
-    apiKey: "AIzaSyAoCKwZTDg2cnk4EL__2F551peIH409Mug",
-    authDomain: "device-rental.firebaseapp.com",
-    databaseURL: "https://device-rental.firebaseio.com",
-    projectId: "device-rental",
-    storageBucket: "",
-    messagingSenderId: "911109915400"
-};
-firebase.initializeApp(config);
-
 
 /*
 ** Create Store
