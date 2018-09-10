@@ -46,6 +46,17 @@ class SignUp extends React.Component {
 
     }
 
+    GuestSignIn(e) {
+        e.preventDefault();
+
+        this.refs.input_dep.value = "GST";
+        this.refs.input_email.value = "guest."+ new Date().getTime();
+
+        this.props.InputDep(this.refs.input_dep)
+        this.props.InputEmail(this.refs.input_email)
+
+    }
+
     render() {
 
         this.history = this.props.props.history;
@@ -88,6 +99,19 @@ class SignUp extends React.Component {
                         </div>
                         <p className="sing_error">{this.state.error.email}</p>
                     </div>
+
+                    <button
+                        onClick={this.GuestSignIn.bind(this)}
+                        style={{
+                            display: "inherit",
+                            margin: "30px auto 0",
+                            padding: "10px 0",
+                            textAlign: "center",
+                            textDecoration: "underline",
+                            color: "#c43535"
+                        }}>
+                        Guest sign in
+                    </button>
 
                 </form>
 
